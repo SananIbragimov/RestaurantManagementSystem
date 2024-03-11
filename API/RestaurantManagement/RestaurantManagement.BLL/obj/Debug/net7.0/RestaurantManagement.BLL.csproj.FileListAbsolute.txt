@@ -9,3 +9,8 @@ C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\refint\RestaurantManagement.BLL.dll
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.pdb
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\ref\RestaurantManagement.BLL.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\bin\Debug\net7.0\RestaurantManagement.DAL.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\bin\Debug\net7.0\RestaurantManagement.DAL.pdb
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.sourcelink.json
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\Restaura.C5A96EEF.Up2Date

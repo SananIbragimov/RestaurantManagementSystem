@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|solutionrelative:restaurantmanagement.dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\dbseedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\dbseedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\appdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\appdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|solutionrelative:restaurantmanagement.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.dal\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C391B690-B376-48BC-8A38-EC63859C6FEA}|RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj|solutionrelative:restaurantmanagement.dal\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +30,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbSeedService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\DbSeedService.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\DbSeedService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\DbSeedService.cs",
+              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\DbSeedService.cs",
+              "ViewState": "AQIAAAoAAAAgMzMzMzMrwBAAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T21:35:16.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\AppDbInitializer.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\AppDbInitializer.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\AppDbInitializer.cs",
+              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\AppDbInitializer.cs",
+              "ViewState": "AQIAAAgAAAAAMzMzMzMbwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T21:26:26.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Entities\\AppUser.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.DAL\\Entities\\AppUser.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Entities\\AppUser.cs",
+              "RelativeToolTip": "RestaurantManagement.DAL\\Entities\\AppUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T16:48:42.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.DAL\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "RestaurantManagement.DAL\\Data\\AppDbContext.cs",
+              "ViewState": "AQIAAAcAAAAAMzMzMzMLwBcAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T16:42:48.305Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -36,35 +96,9 @@
               "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Program.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Program.cs",
               "RelativeToolTip": "RestaurantManagement.WebAPI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA3AAAA",
+              "ViewState": "AQIAABEAAAAAMzMzMzMbwCAAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-11T15:36:54.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Class1.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.DAL\\Class1.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\Class1.cs",
-              "RelativeToolTip": "RestaurantManagement.DAL\\Class1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-11T15:34:24.3Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Class1.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Class1.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Class1.cs",
-              "RelativeToolTip": "RestaurantManagement.BLL\\Class1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-11T15:32:17.204Z",
               "EditorCaption": ""
             }
           ]

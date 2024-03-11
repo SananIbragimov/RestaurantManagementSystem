@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{F25E99CB-327
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{151D327B-3726-4779-8682-83BDDA8F59DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.BLL", "RestaurantManagement.BLL\RestaurantManagement.BLL.csproj", "{6D649E27-2118-403A-90A0-763721EFDD58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.BLL", "RestaurantManagement.BLL\RestaurantManagement.BLL.csproj", "{6D649E27-2118-403A-90A0-763721EFDD58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.DAL", "RestaurantManagement.DAL\RestaurantManagement.DAL.csproj", "{C391B690-B376-48BC-8A38-EC63859C6FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.DAL", "RestaurantManagement.DAL\RestaurantManagement.DAL.csproj", "{C391B690-B376-48BC-8A38-EC63859C6FEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.WebAPI", "RestaurantManagement.WebAPI\RestaurantManagement.WebAPI.csproj", "{0C50F0A7-549E-4470-BF51-8A2264A3CF40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.WebAPI", "RestaurantManagement.WebAPI\RestaurantManagement.WebAPI.csproj", "{0C50F0A7-549E-4470-BF51-8A2264A3CF40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
