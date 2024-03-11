@@ -1,0 +1,11 @@
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\bin\Debug\net7.0\RestaurantManagement.BLL.deps.json
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\bin\Debug\net7.0\RestaurantManagement.BLL.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\bin\Debug\net7.0\RestaurantManagement.BLL.pdb
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.AssemblyInfo.cs
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\refint\RestaurantManagement.BLL.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\RestaurantManagement.BLL.pdb
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.BLL\obj\Debug\net7.0\ref\RestaurantManagement.BLL.dll
