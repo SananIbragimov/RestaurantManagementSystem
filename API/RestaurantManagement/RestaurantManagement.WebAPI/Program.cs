@@ -5,6 +5,8 @@ using System;
 using RestaurantManagement.BLL.Configuration;
 using RestaurantManagement.BLL.Services;
 using RestaurantManagement.DAL.Entities;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace RestaurantManagement.WebAPI
 {
@@ -24,6 +26,9 @@ namespace RestaurantManagement.WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters()
+                .AddValidatorsFromAssemblyContaining<Program>();
             var app = builder.Build();
 
             await DbSeedService.SeedDatabaseAsync(app.Services);
