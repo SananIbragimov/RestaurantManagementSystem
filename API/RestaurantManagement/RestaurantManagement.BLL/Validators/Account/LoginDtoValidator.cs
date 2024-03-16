@@ -12,9 +12,9 @@ namespace RestaurantManagement.BLL.Validators.Account
     {
         public LoginDtoValidator()
         {
-            RuleFor(x => x.UserName)
-                .NotEmpty().WithMessage("Username can't be empty")
-                .Length(5, 25).WithMessage("Username must be between 5 and 25 characters");
+            RuleFor(x => x.Email)
+                .NotEmpty().WithMessage("Email can't be empty")
+                .EmailAddress().WithMessage("Email format is invalid!");
 
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("Password can't be empty")

@@ -89,3 +89,8 @@ C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\FluentValidation.dll
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

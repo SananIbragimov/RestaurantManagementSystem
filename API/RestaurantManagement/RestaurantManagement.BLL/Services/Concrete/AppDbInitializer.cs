@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.BLL.Services
+namespace RestaurantManagement.BLL.Services.concrete
 {
     public class ApplicationDbInitializer
     {
