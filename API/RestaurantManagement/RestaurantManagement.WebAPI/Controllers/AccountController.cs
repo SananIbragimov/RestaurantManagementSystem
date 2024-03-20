@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.BLL.DTOs.Account;
 using RestaurantManagement.BLL.Services.Abstract;
+using RestaurantManagement.BLL.Services.Concrete;
+using RestaurantManagement.DAL.Entities;
 
 namespace RestaurantManagement.WebAPI.Controllers
 {
@@ -13,29 +16,53 @@ namespace RestaurantManagement.WebAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
+        private readonly IFileService _fileService;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IFileService fileService, UserManager<AppUser> userManager, IMapper mapper)
         {
             _accountService = accountService;
+            _fileService = fileService;
+            _userManager = userManager;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        public async Task<IActionResult> Register([FromForm] RegisterDto registerDto)
         {
-            if (!ModelState.IsValid)
+            string imageUrl = null;
+            if (registerDto.Image != null)
             {
-                return BadRequest(ModelState);
+                imageUrl = _fileService.AddFile(registerDto.Image, "userImages");
+                if (string.IsNullOrEmpty(imageUrl))
+                {
+                    return BadRequest("An error occurred while uploading the file.");
+                }
             }
 
-            var result = await _accountService.RegisterUserAsync(registerDto);
+            var user = _mapper.Map<AppUser>(registerDto);
+
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
             {
+                if (!string.IsNullOrEmpty(imageUrl))
+                {
+                    _fileService.DeleteFile(Path.GetFileName(imageUrl), "userImages");
+                }
                 return BadRequest(result.Errors);
             }
 
-            return Ok();
+            var roleResult = await _userManager.AddToRoleAsync(user, registerDto.Role);
+            if (!roleResult.Succeeded)
+            {
+                return BadRequest(roleResult.Errors);
+            }
+
+            return Ok(new { Message = "User registered successfully", user.Id, user.UserName, user.Email, user.ImageUrl });
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)

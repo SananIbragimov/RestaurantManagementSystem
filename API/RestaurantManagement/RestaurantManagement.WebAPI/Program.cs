@@ -10,6 +10,7 @@ using RestaurantManagement.BLL.Services.concrete;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.BLL.Services.Concrete;
 using RestaurantManagement.BLL.Validators.Account;
+using Microsoft.Extensions.Options;
 
 namespace RestaurantManagement.WebAPI
 {
@@ -33,6 +34,9 @@ namespace RestaurantManagement.WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerServices();
             builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IFileService, FileService>();
+
             builder.Services
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters()

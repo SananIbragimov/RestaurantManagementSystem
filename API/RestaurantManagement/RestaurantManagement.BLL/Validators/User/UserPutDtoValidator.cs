@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using RestaurantManagement.BLL.DTOs.Account;
+using RestaurantManagement.BLL.DTOs.User;
 using RestaurantManagement.BLL.Enums;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.BLL.Validators.Account
+namespace RestaurantManagement.BLL.Validators.User
 {
-    public class RegisterDtoValidator : AbstractValidator<RegisterDto>
+    public class UserPutDtoValidator : AbstractValidator<UserPutDto>
     {
-        public RegisterDtoValidator()
+        public UserPutDtoValidator()
         {
             RuleFor(x => x.FirstName)
             .NotEmpty().WithMessage("FirstName can't be empty")
@@ -45,8 +45,8 @@ namespace RestaurantManagement.BLL.Validators.Account
                 .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.");
 
             RuleFor(x => x.Role)
-             .Must(role => Enum.IsDefined(typeof(Roles), role) && role != Roles.SuperAdmin.ToString())
-             .WithMessage($"Invalid role. Valid roles are: {string.Join(", ", Enum.GetNames(typeof(Roles)).Where(r => r != Roles.SuperAdmin.ToString()))}");
+            .Must(role => Enum.IsDefined(typeof(Roles), role) && role != Roles.SuperAdmin.ToString())
+            .WithMessage($"Invalid role. Valid roles are: {string.Join(", ", Enum.GetNames(typeof(Roles)).Where(r => r != Roles.SuperAdmin.ToString()))}");
         }
     }
 }

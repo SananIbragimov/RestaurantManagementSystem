@@ -13,7 +13,7 @@ namespace RestaurantManagement.BLL.Configuration
 {
     public static class IdentityConfiguration
     {
-        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
@@ -22,9 +22,15 @@ namespace RestaurantManagement.BLL.Configuration
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireDigit = true;
+                options.SignIn.RequireConfirmedAccount = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+            });
 
             return services;
         }
