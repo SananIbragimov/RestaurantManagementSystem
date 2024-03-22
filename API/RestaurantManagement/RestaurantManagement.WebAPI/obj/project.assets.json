@@ -1822,6 +1822,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.17",
           "Microsoft.AspNetCore.Identity": "2.1.39",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.16",
+          "RestaurantManagement.Common": "1.0.0",
           "RestaurantManagement.DAL": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -1832,13 +1833,24 @@
           "bin/placeholder/RestaurantManagement.BLL.dll": {}
         }
       },
+      "RestaurantManagement.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        }
+      },
       "RestaurantManagement.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.16",
           "Microsoft.EntityFrameworkCore": "7.0.16",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
+          "RestaurantManagement.Common": "1.0.0"
         },
         "compile": {
           "bin/placeholder/RestaurantManagement.DAL.dll": {}
@@ -4689,6 +4701,11 @@
       "type": "project",
       "path": "../RestaurantManagement.BLL/RestaurantManagement.BLL.csproj",
       "msbuildProject": "../RestaurantManagement.BLL/RestaurantManagement.BLL.csproj"
+    },
+    "RestaurantManagement.Common/1.0.0": {
+      "type": "project",
+      "path": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj",
+      "msbuildProject": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj"
     },
     "RestaurantManagement.DAL/1.0.0": {
       "type": "project",

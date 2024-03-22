@@ -1646,13 +1646,24 @@
           }
         }
       },
+      "RestaurantManagement.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        }
+      },
       "RestaurantManagement.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.16",
           "Microsoft.EntityFrameworkCore": "7.0.16",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
+          "RestaurantManagement.Common": "1.0.0"
         },
         "compile": {
           "bin/placeholder/RestaurantManagement.DAL.dll": {}
@@ -4256,6 +4267,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "RestaurantManagement.Common/1.0.0": {
+      "type": "project",
+      "path": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj",
+      "msbuildProject": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj"
+    },
     "RestaurantManagement.DAL/1.0.0": {
       "type": "project",
       "path": "../RestaurantManagement.DAL/RestaurantManagement.DAL.csproj",
@@ -4269,6 +4285,7 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.17",
       "Microsoft.AspNetCore.Identity >= 2.1.39",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.16",
+      "RestaurantManagement.Common >= 1.0.0",
       "RestaurantManagement.DAL >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -4305,6 +4322,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.Common\\RestaurantManagement.Common.csproj": {
+              "projectPath": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.Common\\RestaurantManagement.Common.csproj"
+            },
             "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj": {
               "projectPath": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.DAL\\RestaurantManagement.DAL.csproj"
             }

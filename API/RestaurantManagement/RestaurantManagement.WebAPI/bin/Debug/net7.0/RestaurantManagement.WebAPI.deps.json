@@ -928,6 +928,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.17",
           "Microsoft.AspNetCore.Identity": "2.1.39",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.16",
+          "RestaurantManagement.Common": "1.0.0",
           "RestaurantManagement.DAL": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -935,11 +936,17 @@
           "RestaurantManagement.BLL.dll": {}
         }
       },
+      "RestaurantManagement.Common/1.0.0": {
+        "runtime": {
+          "RestaurantManagement.Common.dll": {}
+        }
+      },
       "RestaurantManagement.DAL/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.16",
           "Microsoft.EntityFrameworkCore": "7.0.16",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
+          "RestaurantManagement.Common": "1.0.0"
         },
         "runtime": {
           "RestaurantManagement.DAL.dll": {}
@@ -1682,6 +1689,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "RestaurantManagement.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RestaurantManagement.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

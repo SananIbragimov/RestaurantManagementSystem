@@ -1,0 +1,12 @@
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\bin\Debug\net7.0\RestaurantManagement.Common.deps.json
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\bin\Debug\net7.0\RestaurantManagement.Common.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\bin\Debug\net7.0\RestaurantManagement.Common.pdb
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.AssemblyInfo.cs
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.sourcelink.json
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\refint\RestaurantManagement.Common.dll
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\RestaurantManagement.Common.pdb
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.Common\obj\Debug\net7.0\ref\RestaurantManagement.Common.dll

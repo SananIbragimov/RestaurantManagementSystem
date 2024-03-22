@@ -1159,6 +1159,16 @@
             "rid": "win"
           }
         }
+      },
+      "RestaurantManagement.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RestaurantManagement.Common.dll": {}
+        }
       }
     }
   },
@@ -3116,6 +3126,11 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "RestaurantManagement.Common/1.0.0": {
+      "type": "project",
+      "path": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj",
+      "msbuildProject": "../RestaurantManagement.Common/RestaurantManagement.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3124,7 +3139,8 @@
       "Microsoft.EntityFrameworkCore >= 7.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.16",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.16"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.16",
+      "RestaurantManagement.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3158,7 +3174,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.Common\\RestaurantManagement.Common.csproj": {
+              "projectPath": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.Common\\RestaurantManagement.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
