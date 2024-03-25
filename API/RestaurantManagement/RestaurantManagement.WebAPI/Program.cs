@@ -36,6 +36,8 @@ namespace RestaurantManagement.WebAPI
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IFileService, FileService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             builder.Services
                 .AddFluentValidationAutoValidation()

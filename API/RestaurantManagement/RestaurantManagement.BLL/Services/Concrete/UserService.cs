@@ -73,7 +73,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
                     _fileService.DeleteFile(Path.GetFileName(user.ImageUrl), "userImages");
                 }
 
-                var imageUrl = _fileService.AddFile(userPutDto.Image, "userImages");
+                var imageUrl = await _fileService.AddFileAsync(userPutDto.Image, "userImages");
                 user.ImageUrl = imageUrl;
             }
 

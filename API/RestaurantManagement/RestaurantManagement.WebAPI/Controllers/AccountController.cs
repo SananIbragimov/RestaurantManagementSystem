@@ -35,7 +35,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             string imageUrl = null;
             if (registerDto.Image != null)
             {
-                imageUrl = _fileService.AddFile(registerDto.Image, "userImages");
+                imageUrl = await _fileService.AddFileAsync(registerDto.Image, "userImages");
                 if (string.IsNullOrEmpty(imageUrl))
                 {
                     return BadRequest("An error occurred while uploading the file.");

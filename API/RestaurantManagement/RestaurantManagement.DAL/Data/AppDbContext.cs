@@ -39,10 +39,10 @@ namespace RestaurantManagement.DAL.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Order>()
-        .HasOne(o => o.AppUser)
-        .WithMany(u => u.Orders)
-        .HasForeignKey(o => o.AppUserId)
-        .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(o => o.AppUser)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.AppUserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Table>()
                 .HasOne(t => t.AppUser)

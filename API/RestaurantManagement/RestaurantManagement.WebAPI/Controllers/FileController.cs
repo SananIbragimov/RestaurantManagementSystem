@@ -18,7 +18,7 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpPost("upload")]
-        public IActionResult Upload(IFormFile file)
+        public async Task<IActionResult> Upload(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
@@ -40,26 +40,29 @@ namespace RestaurantManagement.WebAPI.Controllers
             }
 
             var targetDirectory = _configuration.GetValue<string>("FileUploadSettings:UploadPath");
-            var filePath = _fileService.AddFile(file, targetDirectory);
+            var filePath = await _fileService.AddFileAsync(file, targetDirectory);
 
             var url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}{filePath}";
 
             return Ok(new { FilePath = url });
         }
 
-        [HttpDelete("delete/{fileName}")]
-        public IActionResult Delete(string fileName)
+        [HttpDelete("delete/{folder}/{fileName}")]
+        public IActionResult Delete(string folder, string fileName)
         {
             try
             {
-                var targetDirectory = _configuration.GetValue<string>("FileUploadSettings:UploadPath");
+                var basePath = _configuration.GetValue<string>("FileUploadSettings:UploadPath");
+                var targetDirectory = Path.Combine(basePath, folder);
+
                 _fileService.DeleteFile(fileName, targetDirectory);
-                return Ok($"File {fileName} deleted successfully");
+                return Ok($"File {fileName} deleted successfully from {folder}");
             }
             catch (Exception ex)
             {
                 return BadRequest($"An error occurred while deleting the file: {ex.Message}");
             }
         }
+
     }
 }

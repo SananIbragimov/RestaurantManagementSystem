@@ -9,7 +9,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
 {
     public interface IFileService
     {
-        string AddFile(IFormFile file, string targetDirectory);
+        Task<string> AddFileAsync(IFormFile file, string targetDirectory);
         void DeleteFile(string fileName, string targetDirectory);
     }
 }

@@ -14,7 +14,8 @@ namespace RestaurantManagement.BLL.AutoMapper
         public UserProfile()
         {
             CreateMap<AppUser, UserDto>();
-            CreateMap<UserPutDto, AppUser>();
+            CreateMap<UserPutDto, AppUser>()
+                .ForMember(dest => dest.ImageUrl, opt => opt.Ignore());
         }
     }
 }

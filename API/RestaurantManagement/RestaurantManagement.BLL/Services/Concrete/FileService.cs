@@ -18,7 +18,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _hostEnvironment = hostEnvironment;
         }
 
-        public string AddFile(IFormFile file, string targetDirectory)
+        public async Task<string> AddFileAsync(IFormFile file, string targetDirectory)
         {
             if (string.IsNullOrEmpty(_hostEnvironment.ContentRootPath))
             {
