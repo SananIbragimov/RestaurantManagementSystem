@@ -25,14 +25,14 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<List<CategoryDto>> GetAllAsync()
         {
-            var categories = await _dbContext.Categories.ToListAsync();
+            var categories = await _dbContext.Categories.Include(c=>c.Products).ToListAsync();
             var categoryDTOs = _mapper.Map<List<CategoryDto>>(categories);
             return categoryDTOs;
         }
 
         public async Task<CategoryDto> GetByIdAsync(int id)
         {
-            var category = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var category = await _dbContext.Categories.Include(c => c.Products).FirstOrDefaultAsync(c => c.Id == id);
             var categoryDto = _mapper.Map<CategoryDto>(category);
 
             return categoryDto;
@@ -40,7 +40,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<CategoryDto> GetByNameAsync(string name)
         {
-            var category = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Name.ToLower() == name.ToLower());
+            var category = await _dbContext.Categories.Include(c => c.Products).FirstOrDefaultAsync(c => c.Name.ToLower() == name.ToLower());
             var categoryDto = _mapper.Map<CategoryDto>(category);
 
             return categoryDto;

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestaurantManagement.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12c80d6bb38e1a0d736572fc4113566fd76c16ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8f68665609490c7b30c45dbefac6604acac5727")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestaurantManagement.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestaurantManagement.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
