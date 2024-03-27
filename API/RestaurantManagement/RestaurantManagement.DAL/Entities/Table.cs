@@ -13,7 +13,7 @@ namespace RestaurantManagement.DAL.Entities
         public string Name { get; set; }
         public bool IsReserved { get; set; }
         public DateTime? ReservationTime { get; set; }
-        public TableStatus TableStatus { get; set; }
+        public TableStatusEnum TableStatus { get; set; }
         public int Capacity { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }

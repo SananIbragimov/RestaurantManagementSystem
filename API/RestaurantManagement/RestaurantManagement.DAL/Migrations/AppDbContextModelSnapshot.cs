@@ -405,9 +405,8 @@ namespace RestaurantManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ReportType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ReportType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()

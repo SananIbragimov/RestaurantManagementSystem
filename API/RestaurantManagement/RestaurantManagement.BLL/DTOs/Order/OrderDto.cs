@@ -10,7 +10,7 @@ namespace RestaurantManagement.BLL.DTOs.Order
     {
         public int Id { get; set; }
         public int TableId { get; set; }
-        public DateTime OrderTime { get; set; } = DateTime.Now;
+        public DateTime OrderTime { get; set; }
         public string AppUserId { get; set; }
     }
 }

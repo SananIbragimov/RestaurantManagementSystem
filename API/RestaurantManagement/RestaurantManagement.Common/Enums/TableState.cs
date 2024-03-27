@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.BLL.Enums
 {
-    public enum TableStatus
+    public enum TableStatusEnum
     {
         Available = 1,
         Occupied = 2,

@@ -10,7 +10,7 @@ namespace RestaurantManagement.DAL.Entities
     {
         public int Id { get; set; }
         public int TableId { get; set; }
-        public DateTime OpenedAt { get; set; }
+        public DateTime OpenedAt { get; set; } = DateTime.Now;
         public DateTime? ClosedAt { get; set; }
         public Table Table { get; set; }
     }

@@ -42,6 +42,11 @@ namespace RestaurantManagement.WebAPI
             builder.Services.AddScoped<IMenuItemService, MenuItemService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+            builder.Services.AddScoped<IReportService, ReportService>();
+            builder.Services.AddScoped<IReservationService, ReservationService>();
+            builder.Services.AddScoped<ISettingService, SettingService>();
+            builder.Services.AddScoped<ITableService, TableService>();
+            builder.Services.AddScoped<ITableOpeningHistoryService, TableOpeningHistoryService>();
 
             builder.Services
                 .AddFluentValidationAutoValidation()
