@@ -96,3 +96,4 @@ C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\obj\Debug\net7.0\RestaurantManagement.WebAPI.genruntimeconfig.cache
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\obj\Debug\net7.0\ref\RestaurantManagement.WebAPI.dll
 C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\obj\Debug\net7.0\RestaurantManagement.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\Desktop\FinalProject\API\RestaurantManagement\RestaurantManagement.WebAPI\bin\Debug\net7.0\RestaurantManagement.WebAPI.staticwebassets.runtime.json

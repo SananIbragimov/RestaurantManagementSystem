@@ -11,6 +11,6 @@ namespace RestaurantManagement.BLL.Services.Abstract
     public interface IAccountService
     {
         Task<IdentityResult> RegisterUserAsync(RegisterDto registerDto);
-        Task<string> LoginUserAsync(LoginDto loginDto);
+        Task<(string UserName, string Token, string Role)> LoginUserAsync(LoginDto loginDto);
     }
 }

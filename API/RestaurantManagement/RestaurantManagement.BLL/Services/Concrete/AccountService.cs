@@ -33,18 +33,20 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _configuration = configuration;
             _mapper = mapper;
         }
-        public async Task<string> LoginUserAsync(LoginDto loginDto)
+        public async Task<(string UserName, string Token, string Role)> LoginUserAsync(LoginDto loginDto)
         {
             var result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, false, false);
             if (!result.Succeeded)
             {
-                return null!;
+                return (null!, null!, null!);
             }
 
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
             var roles = await _userManager.GetRolesAsync(user);
             var token = GenerateJwtToken(user, roles);
-            return token;
+            var role = roles.FirstOrDefault();
+
+            return (user.FirstName, token, role!);
         }
 
         public async Task<IdentityResult> RegisterUserAsync(RegisterDto registerDto)

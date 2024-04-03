@@ -53,6 +53,17 @@ namespace RestaurantManagement.WebAPI
                 .AddFluentValidationClientsideAdapters()
                 .AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
 
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll",
+            //        builder =>
+            //        {
+            //            builder.AllowAnyOrigin()
+            //                   .AllowAnyMethod()
+            //                   .AllowAnyHeader();
+            //        });
+            //});
+
 
             var app = builder.Build();
 
@@ -63,6 +74,12 @@ namespace RestaurantManagement.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors(x => x
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed(origin => true)
+                        .AllowCredentials()); 
+
 
             app.UseHttpsRedirection();
 
@@ -76,6 +93,7 @@ namespace RestaurantManagement.WebAPI
 
                 await next();
             });
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
 

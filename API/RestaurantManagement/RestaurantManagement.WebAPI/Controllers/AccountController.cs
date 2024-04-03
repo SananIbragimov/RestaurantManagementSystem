@@ -72,7 +72,7 @@ namespace RestaurantManagement.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var token = await _accountService.LoginUserAsync(loginDto);
+            var (userName, token, role) = await _accountService.LoginUserAsync(loginDto);
             if (token == null)
             {
                 return BadRequest("Invalid login attempt.");
@@ -86,7 +86,12 @@ namespace RestaurantManagement.WebAPI.Controllers
             };
             Response.Cookies.Append("AuthToken", token, cookieOptions);
 
-            return Ok(new { Token = token });
+            return Ok(new UserInfoDto
+            {
+                UserName = userName,
+                Token = token,
+                Role = role
+            });
         }
 
         [HttpPost("logout")]

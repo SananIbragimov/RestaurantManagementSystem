@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "HXlgREztJdYQO+hcLIiwTIZV/luG4B+XFzFgnHj+9cQ=",
+  "Hash": "laoi0uH2O6Guwhlv5wDfHIL1Snw70DD4GI+d0TR6nW4=",
   "Source": "RestaurantManagement.WebAPI",
   "BasePath": "_content/RestaurantManagement.WebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "RestaurantManagement.WebAPI\\wwwroot",
+      "Source": "RestaurantManagement.WebAPI",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagement.WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\4d7d9220-eb64-470c-ba14-0ac5c9ba7159.jpg",
+      "SourceId": "RestaurantManagement.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagement.WebAPI",
+      "RelativePath": "uploads/products/4d7d9220-eb64-470c-ba14-0ac5c9ba7159.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\4d7d9220-eb64-470c-ba14-0ac5c9ba7159.jpg"
+    }
+  ]
 }

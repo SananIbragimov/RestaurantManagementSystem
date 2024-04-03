@@ -20,12 +20,8 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<string> AddFileAsync(IFormFile file, string targetDirectory)
         {
-            if (string.IsNullOrEmpty(_hostEnvironment.ContentRootPath))
-            {
-                throw new InvalidOperationException("Web root path is not set.");
-            }
+            var uploadsRootFolder = Path.Combine(_hostEnvironment.ContentRootPath, "wwwroot", targetDirectory);
 
-            string uploadsRootFolder = Path.Combine(_hostEnvironment.ContentRootPath, targetDirectory);
             if (!Directory.Exists(uploadsRootFolder))
             {
                 Directory.CreateDirectory(uploadsRootFolder);
@@ -36,11 +32,13 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                file.CopyTo(fileStream);
+                await file.CopyToAsync(fileStream);
             }
 
-            return filePath;
+            return $"/{targetDirectory}/{fileName}";
         }
+
+
 
         public void DeleteFile(string fileName, string targetDirectory)
         {
