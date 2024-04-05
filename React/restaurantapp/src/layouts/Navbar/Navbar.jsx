@@ -17,13 +17,13 @@ function Navbar() {
   return (
     <StyledNavbar>
         <ul>
-            <li><HomeIcon style={iconStyle} /><StyledLink to="/"> Home</StyledLink></li>
+            <li><HomeIcon style={iconStyle} /><StyledLink to='/'> Home</StyledLink></li>
             <li><PersonIcon style={iconStyle} /><StyledLink to='/user'> Users</StyledLink></li>
             <li><TableRestaurantIcon style={iconStyle} /><StyledLink> Tables</StyledLink></li>
             <li><ReceiptLongIcon style={iconStyle} /><StyledLink> Orders</StyledLink></li>
             <li><RestaurantMenuIcon style={iconStyle} /><StyledLink> Menus</StyledLink></li>
-            <li><CategoryIcon style={iconStyle} /><StyledLink> Categories</StyledLink></li>
-            <li><FastfoodIcon style={iconStyle} /><StyledLink> Products</StyledLink></li>
+            <li><CategoryIcon style={iconStyle} /><StyledLink to='/category'> Categories</StyledLink></li>
+            <li><FastfoodIcon style={iconStyle} /><StyledLink to='/product'> Products</StyledLink></li>
             <li><ReportIcon style={iconStyle} /><StyledLink> Reports</StyledLink></li>
             <li><SettingsIcon style={iconStyle} /><StyledLink> Settings</StyledLink></li>
         </ul>

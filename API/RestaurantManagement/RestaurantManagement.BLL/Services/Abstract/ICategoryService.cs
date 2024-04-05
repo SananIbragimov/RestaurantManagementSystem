@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.BLL.DTOs.Category;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
 {
     public interface ICategoryService
     {
-        Task<List<CategoryDto>> GetAllAsync();
+        Task<PageResultDto<CategoryDto>> GetAllAsync(int pageNumber, int pageSize);
         Task<CategoryDto> GetByIdAsync(int id);
         Task<CategoryDto> GetByNameAsync(string name);
         Task<CategoryDto> CreateCategoryAsync(CategoryPostDto categoryPostDto);

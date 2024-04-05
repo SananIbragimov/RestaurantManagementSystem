@@ -8,8 +8,8 @@ function Home() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await getAllCategories();
-      setCategories(res.data);
+      const res = await getAllCategories(1, 10);
+      setCategories(res.data.items);
     };
     fetchCategories();
   }, []);

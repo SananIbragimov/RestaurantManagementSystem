@@ -17,11 +17,11 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var categories = await _categoryService.GetAllAsync();
+            var pageResultDto = await _categoryService.GetAllAsync(pageNumber, pageSize);
 
-            return Ok(categories);
+            return Ok(pageResultDto);
         }
 
         [HttpGet("{id}")]

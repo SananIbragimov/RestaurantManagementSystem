@@ -14,7 +14,7 @@ namespace RestaurantManagement.BLL.Validators.Category
         {
             RuleFor(category => category.Name)
            .NotEmpty().WithMessage("Category name is required.")
-           .Length(2, 100).WithMessage("Category name must be between 2 and 100 characters.");
+           .Length(2, 50).WithMessage("Category name must be between 2 and 50 characters.");
         }
     }
 }
