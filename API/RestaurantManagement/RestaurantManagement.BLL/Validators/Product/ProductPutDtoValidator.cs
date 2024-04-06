@@ -14,7 +14,7 @@ namespace RestaurantManagement.BLL.Validators.Product
         {
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("Product name is required.")
-                .Length(2, 100).WithMessage("Product name must be between 2 and 100 characters.");
+                .Length(2, 50).WithMessage("Product name must be between 2 and 50 characters.");
 
             RuleFor(p => p.Price)
                 .GreaterThan(0).WithMessage("Price must be greater than 0.");

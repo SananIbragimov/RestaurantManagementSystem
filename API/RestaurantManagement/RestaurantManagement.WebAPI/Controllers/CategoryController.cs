@@ -56,7 +56,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _categoryService.UpdateCategoryAsync(id, categoryPutDto);
-                return NoContent();
+                return Ok("Updated successfully");
             }
             catch (KeyNotFoundException ex)
             {
@@ -70,7 +70,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _categoryService.DeleteCategoryAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch(KeyNotFoundException ex)
             {

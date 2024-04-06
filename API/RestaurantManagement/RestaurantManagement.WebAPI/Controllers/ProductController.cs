@@ -18,9 +18,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var products = await _productService.GetAllAsync();
+            var products = await _productService.GetAllAsync(pageNumber, pageSize);
 
             return Ok(products);
         }
@@ -44,9 +44,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet("price")]
-        public async Task<IActionResult> GetByPriceRange([FromQuery] int min,[FromQuery] int max)
+        public async Task<IActionResult> GetByPriceRange([FromQuery] int min,[FromQuery] int max, int pageNumber = 1, int pageSize = 10)
         {
-            var products = await _productService.GetByPriceRangeAsync(min, max);
+            var products = await _productService.GetByPriceRangeAsync(min, max, pageNumber, pageSize);
 
             return Ok(products);
         }
@@ -79,7 +79,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _productService.DeleteProductAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch(KeyNotFoundException ex)
             {

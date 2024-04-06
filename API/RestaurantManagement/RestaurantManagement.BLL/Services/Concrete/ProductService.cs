@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.BLL.DTOs.Category;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using RestaurantManagement.BLL.DTOs.Product;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Data;
@@ -25,12 +27,21 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _fileService = fileService;
         }
 
-        public async Task<List<ProductDto>> GetAllAsync()
+        public async Task<PageResultDto<ProductDto>> GetAllAsync(int pageNumber, int pageSize)
         {
-            var products =await _dbContext.Products.Include(p=>p.Category).ToListAsync();
-            var productDto = _mapper.Map<List<ProductDto>>(products);
+            var totalCount = await _dbContext.Products.CountAsync();
+            var products =await _dbContext.Products
+                                .Include(p=>p.Category)
+                                .Skip((pageNumber - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToListAsync();
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
 
-            return productDto;
+            return new PageResultDto<ProductDto>
+            {
+                Items = productDtos,
+                TotalCount = totalCount
+            };
 
         }
 
@@ -50,12 +61,23 @@ namespace RestaurantManagement.BLL.Services.Concrete
             return productDto;
         }
 
-        public async Task<List<ProductDto>> GetByPriceRangeAsync(int min, int max)
+        public async Task<PageResultDto<ProductDto>> GetByPriceRangeAsync(int min, int max, int pageNumber, int pageSize)
         {
-            var product = await _dbContext.Products.Include(p => p.Category).Where(p=>p.Price>=min && p.Price<=max).ToListAsync();
-            var productDtos = _mapper.Map<List<ProductDto>>(product);
+            var products = await _dbContext.Products
+                                .Include(p => p.Category)
+                                .Where(p=>p.Price>=min && p.Price<=max)
+                                .Skip((pageNumber - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToListAsync();
 
-            return productDtos;
+            var totalCount = products.Count();
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+
+            return new PageResultDto<ProductDto>
+            {
+                Items = productDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<ProductDto> CreateProductAsync(ProductPostDto productPostDto)

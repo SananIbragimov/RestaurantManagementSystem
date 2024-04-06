@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.BLL.DTOs.Product;
+﻿using RestaurantManagement.BLL.DTOs.Pagination;
+using RestaurantManagement.BLL.DTOs.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace RestaurantManagement.BLL.Services.Abstract
 {
     public interface IProductService
     {
-        Task<List<ProductDto>> GetAllAsync();
+        Task<PageResultDto<ProductDto>> GetAllAsync(int pageNumber, int pageSize);
         Task<ProductDto> GetByIdAsync(int id);
         Task<ProductDto> GetByNameAsync(string name);
-        Task<List<ProductDto>> GetByPriceRangeAsync(int min, int max);
+        Task<PageResultDto<ProductDto>> GetByPriceRangeAsync(int min, int max, int pageNumber, int pageSize);
         Task<ProductDto> CreateProductAsync(ProductPostDto productPostDto);
         Task UpdateProductAsync(int id, ProductPutDto productPutDto);
         Task DeleteProductAsync(int id);

@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\1d4dee82-bc91-4e55-985c-6e580762bcbd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\1d4dee82-bc91-4e55-985c-6e580762bcbd.jpg"
+    },
+    {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\2e013230-9a87-44a0-a423-a05d7a937c82.jpg",
       "PackagePath": "staticwebassets\\uploads\\products\\2e013230-9a87-44a0-a423-a05d7a937c82.jpg"
     },
@@ -13,8 +17,16 @@
       "PackagePath": "staticwebassets\\uploads\\products\\31cfd26c-91c6-4804-9c06-eaa636f0065b.jpg"
     },
     {
+      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\383c9762-52d6-471a-94f3-4eeadaf1c64e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\383c9762-52d6-471a-94f3-4eeadaf1c64e.jpg"
+    },
+    {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\4d7d9220-eb64-470c-ba14-0ac5c9ba7159.jpg",
       "PackagePath": "staticwebassets\\uploads\\products\\4d7d9220-eb64-470c-ba14-0ac5c9ba7159.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\600985e7-7a52-4813-bc40-30263627004b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\600985e7-7a52-4813-bc40-30263627004b.jpg"
     },
     {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\61d3c592-f576-4a7d-8fdb-ab94fc9e1ee3.jpg",
@@ -31,6 +43,10 @@
     {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\b66ddb98-ef5b-4576-ae67-35979ab3a1ff.jpg",
       "PackagePath": "staticwebassets\\uploads\\products\\b66ddb98-ef5b-4576-ae67-35979ab3a1ff.jpg"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\products\\d7b05318-ca39-4256-b121-d066162fdf22.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\d7b05318-ca39-4256-b121-d066162fdf22.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.RestaurantManagement.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",
