@@ -38,6 +38,11 @@ namespace RestaurantManagement.BLL.Services.concrete
                 Email = "superadmin@gmail.com",
                 PhoneNumber = "050-222-22-22"
             };
+            if (string.IsNullOrEmpty(superAdminUser.ImageUrl))
+            {
+                superAdminUser.ImageUrl = "/uploads/users/9c41e108-66be-4e41-8e0b-735d157c668f.jpg";
+            }
+            
 
             var userExists = await userManager.FindByEmailAsync(superAdminUser.Email);
             if (userExists == null)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledLink, StyledNavbar } from './Navbar.styled'
+import { useDispatch } from 'react-redux';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import TableRestaurantIcon from '@mui/icons-material/TableRestaurant';
@@ -10,9 +11,15 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import ReportIcon from '@mui/icons-material/Report';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Logout } from '../../features/account/Logout';
 
 function Navbar() {
+  const dispatch = useDispatch();
   const iconStyle = { color: "#c7ab59" }
+
+const handleLogout = ()=>{
+  dispatch(Logout())
+}
 
   return (
     <StyledNavbar>
@@ -29,7 +36,7 @@ function Navbar() {
         </ul>
         <div>
             <img src="" alt="" />
-            <LogoutIcon style={iconStyle} /><StyledLink> Logout</StyledLink>
+            <LogoutIcon style={iconStyle} /><StyledLink onClick={handleLogout}> Logout</StyledLink>
         </div>
     </StyledNavbar>
   )

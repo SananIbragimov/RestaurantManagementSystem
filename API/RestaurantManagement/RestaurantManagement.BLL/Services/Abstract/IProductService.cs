@@ -15,7 +15,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
         Task<ProductDto> GetByNameAsync(string name);
         Task<PageResultDto<ProductDto>> GetByPriceRangeAsync(int min, int max, int pageNumber, int pageSize);
         Task<ProductDto> CreateProductAsync(ProductPostDto productPostDto);
-        Task UpdateProductAsync(int id, ProductPutDto productPutDto);
+        Task<string> UpdateProductAsync(int id, ProductPutDto productPutDto);
         Task DeleteProductAsync(int id);
     }
 }

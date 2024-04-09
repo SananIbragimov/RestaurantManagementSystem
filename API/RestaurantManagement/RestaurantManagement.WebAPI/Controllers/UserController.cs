@@ -11,7 +11,6 @@ namespace RestaurantManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SuperAdmin, Admin")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -22,9 +21,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers(int pageNumber = 1, int pageSize = 10)
         {
-            var users = await _userService.GetAllUsers();
+            var users = await _userService.GetAllUsers(pageNumber, pageSize);
 
             if (users == null) return NotFound();
 

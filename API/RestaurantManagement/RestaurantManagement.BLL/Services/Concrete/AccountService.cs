@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using RestaurantManagement.BLL.DTOs.Account;
+using RestaurantManagement.BLL.DTOs.Product;
 using RestaurantManagement.BLL.Enums;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Entities;
@@ -22,36 +24,63 @@ namespace RestaurantManagement.BLL.Services.Concrete
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IFileService _fileService;
+        private readonly ILogger<AccountService> _logger;
 
         public AccountService(UserManager<AppUser> userManager,
                               SignInManager<AppUser> signInManager,
                               IConfiguration configuration,
-                              IMapper mapper)
+                              IMapper mapper,
+                              IFileService fileService,
+                              ILogger<AccountService> logger)
+
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
             _mapper = mapper;
+            _fileService = fileService;
+            _logger = logger;
         }
-        public async Task<(string UserName, string Token, string Role)> LoginUserAsync(LoginDto loginDto)
+        public async Task<UserInfoDto> LoginUserAsync(LoginDto loginDto)
         {
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            if (user == null)
+            {
+                _logger.LogWarning("User not found: {Email}", loginDto.Email);
+                return null;
+            }
+
             var result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, false, false);
             if (!result.Succeeded)
             {
-                return (null!, null!, null!);
+                _logger.LogWarning("Invalid login. Email: {Email}, Result: {@Result}", loginDto.Email, result);
+                return null;
             }
 
-            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            user = await _userManager.FindByEmailAsync(loginDto.Email);
             var roles = await _userManager.GetRolesAsync(user);
             var token = GenerateJwtToken(user, roles);
             var role = roles.FirstOrDefault();
 
-            return (user.FirstName, token, role!);
+            return new UserInfoDto
+            {
+                UserName = user.UserName,
+                Token = token,
+                Role = role
+            };
         }
 
         public async Task<IdentityResult> RegisterUserAsync(RegisterDto registerDto)
         {
+            var imageUrl = "";
+            if (registerDto.Image != null)
+            {
+                imageUrl = await _fileService.AddFileAsync(registerDto.Image, "uploads/users");
+            }
             var user = _mapper.Map<AppUser>(registerDto);
+            user.ImageUrl = imageUrl;
+            user.UserName = registerDto.Email;
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
             if (result.Succeeded)
@@ -76,9 +105,10 @@ namespace RestaurantManagement.BLL.Services.Concrete
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
 
             var claims = new List<Claim>
-    {
-        new Claim("UserName", user.UserName),
-    };
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+            };
 
             foreach (var role in roles)
             {

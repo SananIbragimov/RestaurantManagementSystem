@@ -113,11 +113,16 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
               <FormLabel>Price</FormLabel>
               <Input
                 value={formik.values.price}
-                onChange={formik.handleChange}
+                onChange={(event) => {
+                  const value = event.target.value.replace('.', ',');
+                  if (/^[0-9]*\,?[0-9]*$/.test(value)) {
+                    formik.setFieldValue('price', value);
+                  }
+                }}
                 onBlur={formik.handleBlur}
                 name="price"
                 placeholder="Enter price"
-                type="number"
+                type="text"
               />
               {formik.touched.price && formik.errors.price && (
                 <p style={{ color: "red" }}>{formik.errors.price}</p>

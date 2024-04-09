@@ -6,6 +6,7 @@ import { EditIcon, DeleteIcon} from '@chakra-ui/icons'
 import ProductAddModal from "../../components/product/ProductAddModal";
 import { getAllProducts } from "../../services/productService";
 import ProductDeleteModal from "../../components/product/ProductDeleteModal";
+import ProductEditModal from "../../components/product/ProductEditModal";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -16,6 +17,7 @@ function Product() {
   const [itemsPerPage] = useState(8);
   const [totalItems, setTotalItems] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [editProductId, setEditProductId] = useState(null);
   const [deleteProductId, setDeleteProductId] = useState(null);
   const query = useQuery();
   const navigate = useNavigate();
@@ -37,6 +39,9 @@ const fetchProducts = useCallback(async () => {
   const handlePageChange = (page) => {
     navigate(`?page=${page}`, { replace: true });
   };
+
+  const openEditModal = (id) => setEditProductId(id);
+  const closeEditModal = () => setEditProductId(null);
 
   const openDeleteModal = (id) => setDeleteProductId(id);
   const closeDeleteModal = () => setDeleteProductId(null);
@@ -67,7 +72,11 @@ const fetchProducts = useCallback(async () => {
             <Td>{product.categoryName}</Td>
             <Td><img src={`${process.env.REACT_APP_API_BASE_URL}${product.imageUrl}`} alt={product.name} width='65px' height='60px'/></Td>
             <Td display="flex" gap="10px" justifyContent="center" padding='18px'>
-              <EditIcon fontSize="18px" color="orange" style={{ cursor: "pointer" }} />
+              <EditIcon onClick={()=>openEditModal(product.id)} fontSize="18px" color="orange" style={{ cursor: "pointer" }} />
+              <ProductEditModal id={product.id}
+                                  isOpen={editProductId === product.id}
+                                  onClose={closeEditModal}
+                                  getProducts={fetchProducts}/>
               <DeleteIcon onClick={()=>openDeleteModal(product.id)} fontSize="18px" color="red" style={{ cursor: "pointer" }} />
               <ProductDeleteModal id={product.id}
                                   isOpen={deleteProductId === product.id}

@@ -6,8 +6,7 @@ export const productSchema = Yup.object().shape({
     .min(2, "Min length is 2!")
     .max(50, "Max length is 50!"),
   categoryId: Yup.number().required("Required!").typeError("Category must be selected!"),
-  price: Yup.number()
-    .required("Required!")
-    .positive("Price must be positive!")
-    .typeError("Price must be a number!")
+  price: Yup.string()
+  .required("Required!"),
+  image: Yup.mixed()
 });

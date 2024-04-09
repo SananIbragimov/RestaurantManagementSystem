@@ -112,14 +112,20 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         }
 
-        public async Task UpdateProductAsync(int id, ProductPutDto productPutDto)
+        public async Task<string> UpdateProductAsync(int id, ProductPutDto productPutDto)
         {
             var product =await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
             if (product != null)
             {
-                _mapper.Map(productPutDto, product);
+                if (productPutDto.Image != null)
+                {
+                    var imageUrl = await _fileService.AddFileAsync(productPutDto.Image, "uploads/products");
+                    product.ImageUrl = imageUrl;
+                }
 
+                _mapper.Map(productPutDto, product);
                 await _dbContext.SaveChangesAsync();
+                return product.ImageUrl;
             }
             else
             {

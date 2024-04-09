@@ -29,38 +29,23 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Register([FromForm] RegisterDto registerDto)
         {
-            string imageUrl = null;
-            if (registerDto.Image != null)
-            {
-                imageUrl = await _fileService.AddFileAsync(registerDto.Image, "userImages");
-                if (string.IsNullOrEmpty(imageUrl))
-                {
-                    return BadRequest("An error occurred while uploading the file.");
-                }
-            }
+            var result = await _accountService.RegisterUserAsync(registerDto);
 
-            var user = _mapper.Map<AppUser>(registerDto);
-
-            var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
             {
-                if (!string.IsNullOrEmpty(imageUrl))
-                {
-                    _fileService.DeleteFile(Path.GetFileName(imageUrl), "userImages");
-                }
                 return BadRequest(result.Errors);
             }
 
-            var roleResult = await _userManager.AddToRoleAsync(user, registerDto.Role);
-            if (!roleResult.Succeeded)
+            var user = await _userManager.FindByEmailAsync(registerDto.Email);
+            if (user == null)
             {
-                return BadRequest(roleResult.Errors);
+                return NotFound("User not found after registration.");
             }
 
-            return Ok(new { Message = "User registered successfully", user.Id, user.UserName, user.Email, user.ImageUrl });
+
+            return Ok(new { Message = "User registered successfully", user.Id, user.UserName });
         }
 
 
@@ -72,8 +57,8 @@ namespace RestaurantManagement.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var (userName, token, role) = await _accountService.LoginUserAsync(loginDto);
-            if (token == null)
+            var userInfo = await _accountService.LoginUserAsync(loginDto);
+            if (userInfo == null)
             {
                 return BadRequest("Invalid login attempt.");
             }
@@ -84,14 +69,9 @@ namespace RestaurantManagement.WebAPI.Controllers
                 Secure = true,
                 Expires = DateTime.Now.AddMinutes(30)
             };
-            Response.Cookies.Append("AuthToken", token, cookieOptions);
+            Response.Cookies.Append("AuthToken", userInfo.Token, cookieOptions);
 
-            return Ok(new UserInfoDto
-            {
-                UserName = userName,
-                Token = token,
-                Role = role
-            });
+            return Ok(userInfo);
         }
 
         [HttpPost("logout")]

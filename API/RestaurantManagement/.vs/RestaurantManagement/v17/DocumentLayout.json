@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\concrete\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\concrete\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\concrete\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\concrete\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\dtos\\pagination\\pageresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\dtos\\pagination\\pageresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\concrete\\appdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\concrete\\appdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\concrete\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\concrete\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.webapi\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C50F0A7-549E-4470-BF51-8A2264A3CF40}|RestaurantManagement.WebAPI\\RestaurantManagement.WebAPI.csproj|solutionrelative:restaurantmanagement.webapi\\controllers\\filecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|c:\\users\\user\\desktop\\finalproject\\api\\restaurantmanagement\\restaurantmanagement.bll\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D649E27-2118-403A-90A0-763721EFDD58}|RestaurantManagement.BLL\\RestaurantManagement.BLL.csproj|solutionrelative:restaurantmanagement.bll\\services\\concrete\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,103 +38,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "RestaurantManagement.WebAPI\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAkAAAAAzszMzMz8vxQAAABVAAAA",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "RestaurantManagement.WebAPI\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAABcAAAAAmpmZmZkdwFsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T20:41:20.302Z",
+              "WhenOpened": "2024-04-08T23:49:16.073Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\ProductService.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\Concrete\\ProductService.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\ProductService.cs",
-              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\Concrete\\ProductService.cs",
-              "ViewState": "AQIAAE4AAADAzMzMzMwUwHAAAAAJAAAA",
+              "DocumentIndex": 2,
+              "Title": "AppDbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\AppDbInitializer.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\Concrete\\AppDbInitializer.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\AppDbInitializer.cs",
+              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\Concrete\\AppDbInitializer.cs",
+              "ViewState": "AQIAAB4AAAAAmpmZmZkdwDEAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T20:28:48.415Z",
+              "WhenOpened": "2024-04-08T19:21:29.287Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PageResultDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\DTOs\\Pagination\\PageResultDto.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\DTOs\\Pagination\\PageResultDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\DTOs\\Pagination\\PageResultDto.cs",
-              "RelativeToolTip": "RestaurantManagement.BLL\\DTOs\\Pagination\\PageResultDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\UserService.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\Concrete\\UserService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\UserService.cs",
+              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\Concrete\\UserService.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAAACUAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T23:14:23.062Z"
+              "WhenOpened": "2024-04-08T16:26:25.311Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "RestaurantManagement.WebAPI\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAADwAAADg//////8nwEgAAAAwAAAA",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "RestaurantManagement.WebAPI\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAAAEwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T22:33:18.213Z",
+              "WhenOpened": "2024-04-08T16:16:21.211Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\CategoryService.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\Concrete\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\CategoryService.cs",
-              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\Concrete\\CategoryService.cs",
-              "ViewState": "AQIAABYAAAAAzMzMzMz8vyQAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T22:32:10.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FileService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\FileService.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.BLL\\Services\\Concrete\\FileService.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.BLL\\Services\\Concrete\\FileService.cs",
-              "RelativeToolTip": "RestaurantManagement.BLL\\Services\\Concrete\\FileService.cs",
-              "ViewState": "AQIAAAoAAAAgAAAAAAAowBgAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T20:15:23.14Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FileController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\FileController.cs",
-              "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Controllers\\FileController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Controllers\\FileController.cs",
-              "RelativeToolTip": "RestaurantManagement.WebAPI\\Controllers\\FileController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAowDQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T20:15:09.462Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Program.cs",
               "RelativeDocumentMoniker": "RestaurantManagement.WebAPI\\Program.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\Program.cs",
               "RelativeToolTip": "RestaurantManagement.WebAPI\\Program.cs",
-              "ViewState": "AQIAADAAAACAMzMzMzMLwD8AAAAZAAAA",
+              "ViewState": "AQIAAC0AAADA//////8nwGoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T19:41:11.81Z"
+              "WhenOpened": "2024-03-22T19:41:11.81Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.BLL.DTOs.Category;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using RestaurantManagement.BLL.DTOs.User;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Entities;
@@ -27,9 +29,13 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _fileService = fileService;
         }
 
-        public async Task<List<UserDto>> GetAllUsers()
+        public async Task<PageResultDto<UserDto>> GetAllUsers(int pageNumber, int pageSize)
         {
-            var users = await _userManager.Users.AsNoTracking().ToListAsync();
+            var totalCount = await _userManager.Users.CountAsync();
+            var users = await _userManager.Users.
+                                 Skip((pageNumber - 1) * pageSize)
+                                 .Take(pageSize)
+                                 .ToListAsync();
             if (users is null)
             {
                 return null!;
@@ -43,7 +49,11 @@ namespace RestaurantManagement.BLL.Services.Concrete
                 userDto.Role = roles.FirstOrDefault();
             }
 
-            return userDtos;
+            return new PageResultDto<UserDto>
+            {
+                Items = userDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<UserDto> GetUserById(string id)

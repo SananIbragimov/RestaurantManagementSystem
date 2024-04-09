@@ -64,8 +64,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         {
             try
             {
-                await _productService.UpdateProductAsync(id, productPutDto);
-                return Ok($"Product with Id {id} updated");
+                var updatedProduct = await _productService.UpdateProductAsync(id, productPutDto);
+                var response = new { Message = $"Product with Id {id} updated", updatedProduct };
+                return Ok(response);
             }
             catch(KeyNotFoundException ex)
             {
