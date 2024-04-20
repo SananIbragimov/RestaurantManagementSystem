@@ -3,15 +3,17 @@ import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import { combineReducers } from "redux";
 import accountSlice from "./slices/accountSlice";
+import langSlice from "./slices/langSlice";
 
 const reducers = combineReducers({
-  account: accountSlice
+  account: accountSlice,
+  lang: langSlice
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["account"],
+  whitelist: ["account", "lang"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -44,12 +44,6 @@ namespace RestaurantManagement.DAL.Data
                 .HasForeignKey(o => o.AppUserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Table>()
-                .HasOne(t => t.AppUser)
-                .WithMany(u => u.Tables)
-                .HasForeignKey(t => t.AppUserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Table)
                 .WithMany(t => t.Orders)

@@ -15,8 +15,6 @@ namespace RestaurantManagement.DAL.Entities
         public DateTime? ReservationTime { get; set; }
         public TableStatusEnum TableStatus { get; set; }
         public int Capacity { get; set; }
-        public string AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
         public ICollection<Order> Orders { get; set; }
 
         public Reservation Reservation {  get; set; }

@@ -1,0 +1,15 @@
+{
+    "searchPlaceholder": "Search products...",
+    "navHome": "Home",
+    "navUser": "Users",
+    "navTable": "Tables",
+    "navOrder": "Orders",
+    "navReserve": "Reservations",
+    "navMenu": "Promotions",
+    "navCategory": "Categories",
+    "navProduct": "Products",
+    "navReport": "Reports",
+    "navSetting": "Settings",
+    "navLogout": "Logout",
+    "navHelloLogout": "Hello"
+  }

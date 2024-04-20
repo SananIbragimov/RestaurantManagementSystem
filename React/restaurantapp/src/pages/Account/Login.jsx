@@ -24,11 +24,11 @@ function Login() {
       >
         <LoginForm />
         <FormControl display="flex" alignItems="center">
-          <FormLabel htmlFor="dark_mode" mb="0">
+          <FormLabel htmlFor="light_mode" mb="0">
             Enable Dark Mode?
           </FormLabel>
           <Switch
-            id="dark_mode"
+            id="light_mode"
             colorScheme="teal"
             size="lg"
             onChange={toggleColorMode}

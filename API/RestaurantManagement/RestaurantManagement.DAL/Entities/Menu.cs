@@ -12,7 +12,7 @@ namespace RestaurantManagement.DAL.Entities
         public string Name { get; set; }
         public DateTime ValidFrom { get; set; } = DateTime.Now;
         public DateTime? ValidTo { get; set; }
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } = decimal.Zero;
         public ICollection<MenuItem> MenuItems { get; set; }
     }
 }

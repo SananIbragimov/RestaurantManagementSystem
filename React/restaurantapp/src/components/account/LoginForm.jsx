@@ -25,6 +25,7 @@ function LoginForm() {
               userName: res.data.userName,
               token: res.data.token,
               role: res.data.role,
+              imageUrl: res.data.imageUrl
             })
           );
           toast({

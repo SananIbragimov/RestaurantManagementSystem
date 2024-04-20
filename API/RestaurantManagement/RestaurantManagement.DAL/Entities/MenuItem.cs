@@ -11,7 +11,7 @@ namespace RestaurantManagement.DAL.Entities
         public int Id { get; set; }
         public int MenuId { get; set; }
         public int ProductId { get; set; }
-        public decimal? PromotionalPrice { get; set; }
+        public decimal? PromotionalPrice { get; set; } = decimal.Zero;
         public Menu Menu { get; set; }
         public Product Product { get; set; }
     }

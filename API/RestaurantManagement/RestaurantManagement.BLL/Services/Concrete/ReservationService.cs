@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.BLL.DTOs.Report;
 using RestaurantManagement.BLL.DTOs.Reservation;
+using RestaurantManagement.BLL.Enums;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
@@ -47,6 +48,19 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
             _dbContext.Reservations.Add(reservation);
             await _dbContext.SaveChangesAsync();
+
+            var table = await _dbContext.Tables.FirstOrDefaultAsync(t => t.Id == reservation.TableId);
+            if (table != null)
+            {
+                table.IsReserved = true;
+                table.TableStatus = TableStatusEnum.Reserved;
+                if (reservation.ReservationTime <= DateTime.Now)
+                {
+                    table.TableStatus = TableStatusEnum.Occupied;
+                }
+                table.ReservationTime = reservation.ReservationTime;
+                await _dbContext.SaveChangesAsync();
+            }
 
             var reservationDto = _mapper.Map<ReservationDto>(reservation);
 

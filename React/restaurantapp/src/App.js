@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import {LanguageProvider} from './features/LanguageContext'
 import Layout from "./layouts/Layout";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -11,6 +12,8 @@ import Register from "./pages/Account/Register";
 import User from "./pages/User/User";
 import { checkTokenExpiration } from "./helpers/authHelper";
 import { logOutAction } from "./redux/slices/accountSlice";
+import Menu from "./pages/Menu/Menu";
+import Table from "./pages/Table/Table";
 
 function App() {
   const { isAuthenticated, role } = useSelector((state) => state.account);
@@ -31,6 +34,7 @@ function App() {
   return (
     <>
       <Router>
+      <LanguageProvider>
       <Routes>
         <Route path="/login" element={<Login />}/>
         {isAuthenticated ? (
@@ -40,6 +44,8 @@ function App() {
               <Route path="/category" element={<Category />} />
               <Route path="/product" element={<Product />} />
               <Route path="/user" element={<User />} />
+              <Route path="/table" element={<Table />} />
+              <Route path="/menu" element={<Menu />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             {role === "SuperAdmin" && <Route path="/register" element={<Register />} />}
@@ -48,6 +54,7 @@ function App() {
           <Route path="*" element={<Navigate replace to="/login" />} />
         )}
       </Routes>
+      </LanguageProvider>
     </Router>
     </>
   );

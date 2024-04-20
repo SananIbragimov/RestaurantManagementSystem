@@ -7,7 +7,8 @@ export const accountSlice = createSlice({
     isAuthenticated: false,
     token: null,
     userName: null,
-    role: null
+    role: null,
+    imageUrl: null
   },
   reducers: {
     logInAction: (state, action) => {
@@ -15,6 +16,7 @@ export const accountSlice = createSlice({
       state.token = action.payload.token;
       state.userName = action.payload.userName;
       state.role = action.payload.role;
+      state.imageUrl = action.payload.imageUrl;
       setTokenExpiration(action.payload.token);
     },
 
@@ -23,6 +25,7 @@ export const accountSlice = createSlice({
       state.token = null;
       state.userName = null;
       state.role = null;
+      state.imageUrl = null;
       clearTokenExpiration();
     },
   },

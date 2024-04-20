@@ -133,6 +133,10 @@
       "PackagePath": "staticwebassets\\uploads\\users\\8f8b0082-59c7-47ed-ab09-6bc67a881069.jpg"
     },
     {
+      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\users\\9c41e108-66be-4e41-8e0b-735d157c668f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\users\\9c41e108-66be-4e41-8e0b-735d157c668f.jpg"
+    },
+    {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\users\\d2c6a883-9c22-4757-81a4-1d549628b1b7.jpg",
       "PackagePath": "staticwebassets\\uploads\\users\\d2c6a883-9c22-4757-81a4-1d549628b1b7.jpg"
     },
@@ -143,14 +147,6 @@
     {
       "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\uploads\\users\\fbf70860-5cce-4bcd-8c6c-21421bd7cb7f.jpg",
       "PackagePath": "staticwebassets\\uploads\\users\\fbf70860-5cce-4bcd-8c6c-21421bd7cb7f.jpg"
-    },
-    {
-      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\userImages\\178a63d3-7bb5-4d6f-a9fa-2359fddd0148.jpg",
-      "PackagePath": "staticwebassets\\userImages\\178a63d3-7bb5-4d6f-a9fa-2359fddd0148.jpg"
-    },
-    {
-      "Id": "C:\\Users\\user\\Desktop\\FinalProject\\API\\RestaurantManagement\\RestaurantManagement.WebAPI\\wwwroot\\userImages\\a1398b14-6507-4229-8372-7a369a836786.jpg",
-      "PackagePath": "staticwebassets\\userImages\\a1398b14-6507-4229-8372-7a369a836786.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.RestaurantManagement.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",

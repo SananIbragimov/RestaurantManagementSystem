@@ -14,15 +14,12 @@ namespace RestaurantManagement.BLL.Validators.Menu
         {
             RuleFor(menu => menu.Name)
             .NotEmpty().WithMessage("Menu name is required.")
-            .Length(2, 100).WithMessage("Menu name must be between 2 and 100 characters.");
+            .Length(2, 50).WithMessage("Menu name must be between 2 and 50 characters.");
 
             RuleFor(menu => menu.ValidFrom)
                 .LessThanOrEqualTo(menu => menu.ValidTo)
                 .When(menu => menu.ValidTo.HasValue)
                 .WithMessage("Valid From date must be less than or equal to Valid To date.");
-
-            RuleFor(menu => menu.Price)
-                .GreaterThan(0).WithMessage("Price must be greater than 0.");
 
             RuleFor(menu => menu.ValidTo)
                 .GreaterThan(menu => menu.ValidFrom)

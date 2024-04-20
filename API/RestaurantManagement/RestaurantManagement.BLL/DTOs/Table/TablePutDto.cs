@@ -14,6 +14,5 @@ namespace RestaurantManagement.BLL.DTOs.Table
         public DateTime? ReservationTime { get; set; }
         public TableStatusEnum TableStatus { get; set; }
         public int Capacity { get; set; }
-        public string AppUserId { get; set; }
     }
 }

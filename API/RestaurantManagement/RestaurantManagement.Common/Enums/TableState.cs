@@ -9,7 +9,8 @@ namespace RestaurantManagement.BLL.Enums
     public enum TableStatusEnum
     {
         Available = 1,
-        Occupied = 2,
-        Reserved = 3
+        Reserved = 2,
+        Occupied = 3,
+        
     }
 }

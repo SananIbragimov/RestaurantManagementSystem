@@ -14,13 +14,10 @@ namespace RestaurantManagement.BLL.Validators.Table
         {
             RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Table name is required.")
-            .Length(2, 100).WithMessage("Table name must be between 2 and 100 characters.");
+            .Length(2, 30).WithMessage("Table name must be between 2 and 30 characters.");
 
             RuleFor(x => x.Capacity)
                 .GreaterThan(0).WithMessage("Capacity must be greater than 0.");
-
-            RuleFor(x => x.AppUserId)
-                .NotEmpty().WithMessage("AppUser ID is required.");
 
             When(x => x.IsReserved, () =>
             {

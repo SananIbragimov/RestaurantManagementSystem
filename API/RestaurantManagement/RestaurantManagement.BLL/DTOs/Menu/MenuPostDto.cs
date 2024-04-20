@@ -11,6 +11,5 @@ namespace RestaurantManagement.BLL.DTOs.Menu
         public string Name { get; set; }
         public DateTime ValidFrom { get; set; } = DateTime.Now;
         public DateTime? ValidTo { get; set; }
-        public decimal Price { get; set; }
     }
 }

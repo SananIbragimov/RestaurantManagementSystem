@@ -1,4 +1,6 @@
-﻿using RestaurantManagement.BLL.DTOs.Menu;
+﻿
+using RestaurantManagement.BLL.DTOs.Menu;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
 {
     public interface IMenuService
     {
-        Task<List<MenuDto>> GetAllAsync();
+        Task<PageResultDto<MenuDto>> GetAllAsync(int pageNumber, int pageSize);
         Task<MenuDto> GetByIdAsync(int id);
         Task<MenuDto> CreateMenuAsync(MenuPostDto menuPostDto);
         Task UpdateMenuAsync(int id, MenuPutDto menuPutDto);

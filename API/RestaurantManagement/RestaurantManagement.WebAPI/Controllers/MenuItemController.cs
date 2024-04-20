@@ -32,13 +32,36 @@ namespace RestaurantManagement.WebAPI.Controllers
             return Ok(menuItem);
         }
 
+        [HttpGet("menuId/{menuId}")]
+        public async Task<IActionResult> GetAllMenuItemsByMenuId(int menuId)
+        {
+            var menuItems = await _menuItemService.GetAllMenuItemsByMenuIdAsync(menuId);
+            if (!menuItems.Any())
+            {
+                return NotFound($"No MenuItems found for menuId: {menuId}");
+            }
+
+            return Ok(menuItems);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(MenuItemPostDto menuItemPostDto)
         {
-            var menuItem = await _menuItemService.CreateMenuItemAsync(menuItemPostDto);
-
-            return CreatedAtAction(nameof(GetById), new { id = menuItem.Id }, menuItem);
+            try
+            {
+                var menuItem = await _menuItemService.CreateMenuItemAsync(menuItemPostDto);
+                return CreatedAtAction(nameof(GetById), new { id = menuItem.Id }, menuItem);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, MenuItemPutDto menuItemPutDto)
@@ -46,7 +69,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _menuItemService.UpdateMenuItemAsync(id, menuItemPutDto);
-                return NoContent();
+                return Ok("Updated successfully");
             }
             catch (KeyNotFoundException ex)
             {
@@ -60,7 +83,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _menuItemService.DeleteMenuItemAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch (KeyNotFoundException ex)
             {

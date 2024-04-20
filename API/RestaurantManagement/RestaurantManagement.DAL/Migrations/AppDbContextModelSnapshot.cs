@@ -480,10 +480,6 @@ namespace RestaurantManagement.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
@@ -501,8 +497,6 @@ namespace RestaurantManagement.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Tables");
                 });
@@ -661,17 +655,6 @@ namespace RestaurantManagement.DAL.Migrations
                     b.Navigation("Table");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.DAL.Entities.Table", b =>
-                {
-                    b.HasOne("RestaurantManagement.DAL.Entities.AppUser", "AppUser")
-                        .WithMany("Tables")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.TableOpeningHistory", b =>
                 {
                     b.HasOne("RestaurantManagement.DAL.Entities.Table", "Table")
@@ -686,8 +669,6 @@ namespace RestaurantManagement.DAL.Migrations
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.AppUser", b =>
                 {
                     b.Navigation("Orders");
-
-                    b.Navigation("Tables");
                 });
 
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.Category", b =>

@@ -17,9 +17,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var menus =await _menuService.GetAllAsync();
+            var menus =await _menuService.GetAllAsync(pageNumber, pageSize);
             return Ok(menus);
         }
 
@@ -59,7 +59,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _menuService.DeleteMenuAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch (KeyNotFoundException ex)
             {

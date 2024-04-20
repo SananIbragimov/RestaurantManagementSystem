@@ -65,9 +65,10 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
             return new UserInfoDto
             {
-                UserName = user.UserName,
+                UserName = user.FirstName,
                 Token = token,
-                Role = role
+                Role = role,
+                ImageUrl = user.ImageUrl
             };
         }
 
