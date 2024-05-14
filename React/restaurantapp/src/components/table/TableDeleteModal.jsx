@@ -1,32 +1,55 @@
 import React from "react";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalHeader,
-    ModalOverlay,
-    ModalFooter,
-    useToast,
-    Heading,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  ModalFooter,
+  useToast,
+  Heading,
+} from "@chakra-ui/react";
 import { deleteTable } from "../../services/tableService";
+import { useTranslation } from "../../features/LanguageContext";
 
-function TableDeleteModal({id, isOpen, onClose, getTables}) {
+function TableDeleteModal({ id, isOpen, onClose, getTables }) {
   const toast = useToast();
+  const translations = useTranslation();
 
   const handleDeleteBtnClick = async () => {
-    let resp = await deleteTable(id);
-    if (resp.status === 200) {
+    try {
+      let resp = await deleteTable(id);
+      if (resp.status === 200) {
+        toast({
+          title: "Table deleted.",
+          description: "The table has been successfully deleted.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        getTables();
+        onClose();
+      } else {
+        toast({
+          title: "Failed to delete the table.",
+          description: resp.data || "An unexpected error occurred.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.error("Delete operation failed:", error);
       toast({
-        title: "Table deleted.",
-        status: "success",
-        duration: 3000,
+        title: "Deletion Failed",
+        description:
+          error.response.data || "The operation could not be completed.",
+        status: "error",
+        duration: 5000,
         isClosable: true,
       });
-      getTables();
-      onClose();
     }
   };
 
@@ -35,17 +58,17 @@ function TableDeleteModal({id, isOpen, onClose, getTables}) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Delete table</ModalHeader>
+          <ModalHeader>{translations.tableDelete}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <Heading>Are you sure?</Heading>
+            <Heading>{translations.areYouSure}</Heading>
           </ModalBody>
 
           <ModalFooter>
             <Button onClick={handleDeleteBtnClick} colorScheme="red" mr={3}>
-              Yes
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

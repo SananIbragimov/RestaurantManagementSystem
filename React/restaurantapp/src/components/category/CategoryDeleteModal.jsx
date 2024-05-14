@@ -1,20 +1,22 @@
 import React from "react";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalHeader,
-    ModalOverlay,
-    ModalFooter,
-    useToast,
-    Heading,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  ModalFooter,
+  useToast,
+  Heading,
+} from "@chakra-ui/react";
 import { deleteCategory } from "../../services/categoryService";
+import { useTranslation } from "../../features/LanguageContext";
 
-function CategoryDeleteModal({id, isOpen, onClose, getCategories}) {
+function CategoryDeleteModal({ id, isOpen, onClose, getCategories }) {
   const toast = useToast();
+  const translations = useTranslation();
 
   const handleDeleteBtnClick = async () => {
     let resp = await deleteCategory(id);
@@ -34,17 +36,17 @@ function CategoryDeleteModal({id, isOpen, onClose, getCategories}) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Delete category</ModalHeader>
+          <ModalHeader>{translations.categoryDelete}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <Heading>Are you sure?</Heading>
+            <Heading>{translations.areYouSure}</Heading>
           </ModalBody>
 
           <ModalFooter>
             <Button onClick={handleDeleteBtnClick} colorScheme="red" mr={3}>
-              Yes
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

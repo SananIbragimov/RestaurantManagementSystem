@@ -17,12 +17,17 @@ import {
 import { useFormik } from "formik";
 import { getAllProducts } from "../../../services/productService";
 import { menuItemSchema } from "../../../validations/menuItemSchema";
-import { getAllMenuItemsByMenuId, postMenuItem } from "../../../services/menuService";
+import {
+  getAllMenuItemsByMenuId,
+  postMenuItem,
+} from "../../../services/menuService";
+import { useTranslation } from "../../../features/LanguageContext";
 
 function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
   const [menuItems, setMenuItems] = useState([]);
   const [products, setProducts] = useState([]);
   const toast = useToast();
+  const translations = useTranslation();
 
   useEffect(() => {
     getAllProducts(1, 10)
@@ -34,30 +39,30 @@ function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
 
   useEffect(() => {
     let isCancelled = false;
-  
+
     const fetchMenuItems = async () => {
       try {
         const response = await getAllMenuItemsByMenuId(menuId);
         if (!isCancelled) {
-                const uniqueItems = Array.from(
-          new Set(response.data.map((a) => a.productId))
-        ).map((productId) => {
-          return response.data.find((a) => a.productId === productId);
-        });
-        setMenuItems(uniqueItems);
+          const uniqueItems = Array.from(
+            new Set(response.data.map((a) => a.productId))
+          ).map((productId) => {
+            return response.data.find((a) => a.productId === productId);
+          });
+          setMenuItems(uniqueItems);
         }
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     fetchMenuItems();
-  
+
     return () => {
       isCancelled = true;
     };
   }, [menuId]);
-  
+
   const formik = useFormik({
     initialValues: {
       menuId: menuId,
@@ -68,24 +73,28 @@ function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
     validationSchema: menuItemSchema,
 
     onSubmit: (values) => {
-      const isExistingProduct = menuItems.find(item => item.productId === parseInt(values.productId));
+      const isExistingProduct = menuItems.find(
+        (item) => item.productId === parseInt(values.productId)
+      );
 
       if (isExistingProduct) {
-          toast({
-              title: 'Error',
-              description: 'This product has already been added to the menu.',
-              status: 'error',
-              duration: 5000,
-              isClosable: true,
-          });
-          return; 
+        toast({
+          title: "Error",
+          description: "This product has already been added to the menu.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
       }
 
-        const dataToSend = {
-            menuId: values.menuId,
-            productId: parseInt(values.productId),
-            promotionalPrice: values.promotionalPrice ? parseFloat(values.promotionalPrice.replace(',', '.')) : null
-          };
+      const dataToSend = {
+        menuId: values.menuId,
+        productId: parseInt(values.productId),
+        promotionalPrice: values.promotionalPrice
+          ? parseFloat(values.promotionalPrice.replace(",", "."))
+          : null,
+      };
       postMenuItem(dataToSend)
         .then((res) => {
           toast({
@@ -114,12 +123,12 @@ function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create MenuItem</ModalHeader>
+        <ModalHeader>{translations.menuItemCreate}</ModalHeader>
         <ModalCloseButton />
         <form onSubmit={formik.handleSubmit}>
           <ModalBody pb={6}>
             <FormControl mt={4}>
-              <FormLabel>Promotional Price</FormLabel>
+              <FormLabel>{translations.promotionalPrice}</FormLabel>
               <Input
                 value={formik.values.promotionalPrice}
                 onChange={(event) => {
@@ -142,7 +151,7 @@ function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Product</FormLabel>
+              <FormLabel>{translations.product}</FormLabel>
               <Select
                 placeholder="Select product"
                 onChange={formik.handleChange}
@@ -164,9 +173,9 @@ function MenuItemAddModal({ isOpen, onClose, menuId, getMenus }) {
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} type="submit">
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </form>
       </ModalContent>

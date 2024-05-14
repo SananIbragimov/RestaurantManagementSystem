@@ -5,7 +5,9 @@ export const postTable = (data) => {
 };
 
 export const getAllTables = (currentPage = 1, itemsPerPage = 10) => {
-  return httpClient.get(`/table?pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+  return httpClient.get(
+    `/table?pageNumber=${currentPage}&pageSize=${itemsPerPage}`
+  );
 };
 
 export const getTable = (id) => {

@@ -46,7 +46,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<MenuDto> GetByIdAsync(int id)
         {
-            var menu =await _dbContext.Menus.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+            var menu = await _dbContext.Menus.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
             var menuDto = _mapper.Map<MenuDto>(menu);
 
             return menuDto;
@@ -66,7 +66,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task UpdateMenuAsync(int id, MenuPutDto menuPutDto)
         {
-            var menu =await _dbContext.Menus.FirstOrDefaultAsync(m => m.Id == id);
+            var menu = await _dbContext.Menus.FirstOrDefaultAsync(m => m.Id == id);
             if (menu != null)
             {
                 _mapper.Map(menuPutDto, menu);
@@ -80,7 +80,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task DeleteMenuAsync(int id)
         {
-            var menu =await _dbContext.Menus.FirstOrDefaultAsync(m => m.Id == id);
+            var menu = await _dbContext.Menus.FirstOrDefaultAsync(m => m.Id == id);
             if (menu != null)
             {
                 _dbContext.Menus.Remove(menu);

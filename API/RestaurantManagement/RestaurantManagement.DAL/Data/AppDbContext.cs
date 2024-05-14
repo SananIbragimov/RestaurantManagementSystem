@@ -31,8 +31,6 @@ namespace RestaurantManagement.DAL.Data
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Setting> Settings { get; set; }
-        public DbSet<TableOpeningHistory> TableOpeningHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,7 +48,7 @@ namespace RestaurantManagement.DAL.Data
                 .HasForeignKey(o => o.TableId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
+
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Category)
                 .WithMany(c => c.Products)
@@ -77,9 +75,13 @@ namespace RestaurantManagement.DAL.Data
                 .Property(mi => mi.PromotionalPrice)
                 .HasPrecision(18, 2);
 
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.Price)
+                .HasPrecision(18, 2);
+
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
-                .HasPrecision(18, 2); 
+                .HasPrecision(18, 2);
         }
 
     }

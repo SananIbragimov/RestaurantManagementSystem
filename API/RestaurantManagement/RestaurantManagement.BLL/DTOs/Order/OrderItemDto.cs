@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantManagement.BLL.DTOs.Product;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,10 @@ namespace RestaurantManagement.BLL.DTOs.Order
         public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
+
+        public decimal TotalPrice => Quantity * Price;
+        public ProductDto Product { get; set; }
+        public OrderDto Order { get; set; }
     }
 }

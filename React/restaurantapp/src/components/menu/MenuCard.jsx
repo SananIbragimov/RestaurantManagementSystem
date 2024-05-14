@@ -19,12 +19,18 @@ import MenuDeleteModal from "./MenuDeleteModal";
 import MenuEditModal from "./MenuEditModal";
 import MenuItemAddModal from "./menuItem/MenuItemAddModal";
 import ViewItemsModal from "./menuItem/ViewItemsModal";
+import { useSelector } from "react-redux";
+import { useTranslation } from "../../features/LanguageContext";
 
 function MenuCard({ id, name, sdate, edate, price, getMenus }) {
   const [utcSDate, setUtcSDate] = useState(null);
   const [utcEDate, setUtcEDate] = useState(null);
   const [isAddItemOpen, setIsAddItemOpen] = useState(false);
   const [isViewItemsOpen, setIsViewItemsOpen] = useState(false);
+
+  const { role } = useSelector((state) => state.account);
+  const translations = useTranslation();
+
   const {
     isOpen: isEditOpen,
     onOpen: onEditOpen,
@@ -35,7 +41,6 @@ function MenuCard({ id, name, sdate, edate, price, getMenus }) {
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
   } = useDisclosure();
-
 
   useEffect(() => {
     const startDate = new Date(sdate);
@@ -55,11 +60,9 @@ function MenuCard({ id, name, sdate, edate, price, getMenus }) {
     }
   }, [sdate, edate]);
 
-
-
   return (
     <>
-    {isEditOpen && (
+      {isEditOpen && (
         <MenuEditModal
           getMenus={getMenus}
           id={id}
@@ -75,12 +78,35 @@ function MenuCard({ id, name, sdate, edate, price, getMenus }) {
           onClose={onDeleteClose}
         />
       )}
-      <Card maxW="25%" >
-        <CardHeader backgroundColor="#222f3e" height='3vh !important' borderTopRadius='8px'>
-          <Flex justifyContent="flex-end" gap='5px' alignItems='center' height='100% !important'>
-              <EditIcon onClick={onEditOpen} color="orange" fontSize="1xl" cursor="pointer" />
-              <DeleteIcon onClick={onDeleteOpen} color="#ec2626" fontSize="1xl" cursor="pointer" />
-            </Flex>
+      <Card maxW="25%">
+        <CardHeader
+          backgroundColor="#222f3e"
+          height="3vh !important"
+          borderTopRadius="8px"
+        >
+          <Flex
+            justifyContent="flex-end"
+            gap="5px"
+            alignItems="center"
+            height="100% !important"
+          >
+            {(role === "Admin" || role === "SuperAdmin") && (
+              <>
+                <EditIcon
+                  onClick={onEditOpen}
+                  color="orange"
+                  fontSize="1xl"
+                  cursor="pointer"
+                />
+                <DeleteIcon
+                  onClick={onDeleteOpen}
+                  color="#ec2626"
+                  fontSize="1xl"
+                  cursor="pointer"
+                />
+              </>
+            )}
+          </Flex>
         </CardHeader>
         <Divider />
         <CardBody backgroundColor="#a9c5e6">
@@ -89,10 +115,10 @@ function MenuCard({ id, name, sdate, edate, price, getMenus }) {
               {name}
             </Heading>
             <Text textColor="#222f3e" fontSize="1xl">
-              <b>Start date:</b> {utcSDate}
+              <b>{translations.startDate}:</b> {utcSDate}
             </Text>
             <Text textColor="#222f3e" fontSize="1xl">
-              <b>End date:</b> {utcEDate}
+              <b>{translations.endDate}:</b> {utcEDate}
             </Text>
             <Text textColor="#C84C37" fontSize="2xl">
               ₼{price}
@@ -100,23 +126,53 @@ function MenuCard({ id, name, sdate, edate, price, getMenus }) {
           </Stack>
         </CardBody>
         <Divider />
-        <CardFooter backgroundColor="lightgray" height='8vh' display="flex"
-            alignItems="center">
+        <CardFooter
+          backgroundColor="lightgray"
+          height="8vh"
+          display="flex"
+          alignItems="center"
+        >
           <ButtonGroup
             width="full"
             display="flex"
             justifyContent="space-between"
           >
-            <Button onClick={() => setIsAddItemOpen(true)} variant="solid" colorScheme="blue" padding='2px 10px'>
-              Add Item
-            </Button>
-            <Button onClick={() => setIsViewItemsOpen(true)} variant="solid" colorScheme="green" padding='2px 10px'>
+            {(role === "Admin" || role === "SuperAdmin") && (
+              <Button
+                onClick={() => setIsAddItemOpen(true)}
+                variant="solid"
+                colorScheme="blue"
+                padding="2px 10px"
+              >
+                {translations.addItem}
+              </Button>
+            )}
+            <Button
+              onClick={() => setIsViewItemsOpen(true)}
+              variant="solid"
+              colorScheme="green"
+              padding="2px 10px"
+            >
               <ViewIcon />
             </Button>
           </ButtonGroup>
         </CardFooter>
-        {isAddItemOpen && <MenuItemAddModal isOpen={isAddItemOpen} onClose={() => setIsAddItemOpen(false)} menuId={id} getMenus={getMenus}/>}
-      {isViewItemsOpen && <ViewItemsModal isOpen={isViewItemsOpen} onClose={() => setIsViewItemsOpen(false)} menuId={id} getMenus={getMenus}/>}
+        {isAddItemOpen && (
+          <MenuItemAddModal
+            isOpen={isAddItemOpen}
+            onClose={() => setIsAddItemOpen(false)}
+            menuId={id}
+            getMenus={getMenus}
+          />
+        )}
+        {isViewItemsOpen && (
+          <ViewItemsModal
+            isOpen={isViewItemsOpen}
+            onClose={() => setIsViewItemsOpen(false)}
+            menuId={id}
+            getMenus={getMenus}
+          />
+        )}
       </Card>
     </>
   );

@@ -23,6 +23,14 @@ namespace RestaurantManagement.BLL.Validators.Reservation
             RuleFor(x => x.CustomerPhone)
                 .NotEmpty().WithMessage("Customer phone is required.")
                 .Matches(new Regex(@"^\+?[1-9]\d{1,14}$")).WithMessage("Customer phone is not a valid international phone number.");
+
+            RuleFor(x => x.ReservationTime)
+               .Must(BeAValidDate).WithMessage("Reservation time must be in the future.");
+
+            static bool BeAValidDate(DateTime date)
+            {
+                return date > DateTime.Now;
+            }
         }
     }
 }

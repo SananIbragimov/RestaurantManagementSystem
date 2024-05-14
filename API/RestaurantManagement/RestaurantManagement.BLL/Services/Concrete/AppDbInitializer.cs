@@ -42,7 +42,7 @@ namespace RestaurantManagement.BLL.Services.concrete
             {
                 superAdminUser.ImageUrl = "/uploads/users/9c41e108-66be-4e41-8e0b-735d157c668f.jpg";
             }
-            
+
 
             var userExists = await userManager.FindByEmailAsync(superAdminUser.Email);
             if (userExists == null)

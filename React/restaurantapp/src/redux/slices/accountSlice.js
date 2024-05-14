@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { clearTokenExpiration, setTokenExpiration } from "../../helpers/authHelper";
+import {
+  clearTokenExpiration,
+  setTokenExpiration,
+} from "../../helpers/authHelper";
 
 export const accountSlice = createSlice({
   name: "account",
@@ -8,7 +11,7 @@ export const accountSlice = createSlice({
     token: null,
     userName: null,
     role: null,
-    imageUrl: null
+    imageUrl: null,
   },
   reducers: {
     logInAction: (state, action) => {

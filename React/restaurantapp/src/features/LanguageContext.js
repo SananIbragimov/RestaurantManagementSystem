@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const LanguageContext = createContext();
 

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useTranslation } from "../features/LanguageContext";
 
 function NotFound() {
-  return (
-    <div>NotFound</div>
-  )
+  const translations = useTranslation();
+
+  return <div>{translations.notFound}</div>;
 }
 
-export default NotFound
+export default NotFound;

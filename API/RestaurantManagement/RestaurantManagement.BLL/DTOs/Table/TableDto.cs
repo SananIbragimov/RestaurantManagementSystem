@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.BLL.Enums;
+﻿using RestaurantManagement.BLL.DTOs.Order;
+using RestaurantManagement.BLL.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace RestaurantManagement.BLL.DTOs.Table
         public DateTime? ReservationTime { get; set; }
         public TableStatusEnum TableStatus { get; set; }
         public int Capacity { get; set; }
+
+        public ICollection<OrderDto> Orders { get; set; }
     }
 }

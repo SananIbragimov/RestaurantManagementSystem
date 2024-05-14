@@ -10,16 +10,23 @@ export const tableSchema = Yup.object().shape({
     .moreThan(0, "Capacity must be greater than 0."),
   isReserved: Yup.boolean(),
   reservationTime: Yup.date()
-  .nullable()
-  .when("isReserved", (isReserved, schema) => 
-      isReserved ? schema.required("Reservation time is required when the table is reserved.")
-      : schema
-  ),
+    .nullable()
+    .when("isReserved", (isReserved, schema) =>
+      !isReserved
+        ? schema.required(
+            "Reservation time is required when the table is reserved."
+          )
+        : schema
+    ),
 
   validFromTime: Yup.string()
     .nullable()
-    .when("isReserved", (isReserved, schema) => 
-      isReserved ? schema.required("Valid from time is required when reservation time is set.") : schema
+    .when("isReserved", (isReserved, schema) =>
+      !isReserved
+        ? schema.required(
+            "Valid from time is required when reservation time is set."
+          )
+        : schema
     ),
   tableStatus: Yup.number()
     .required("Table status is required.")

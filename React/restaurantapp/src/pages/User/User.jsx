@@ -16,6 +16,7 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { getAllUsers } from "../../services/userService";
 import UserEditModal from "../../components/user/UserEditModal";
 import UserDeleteModal from "../../components/user/UserDeleteModal";
+import { useTranslation } from "../../features/LanguageContext";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -30,6 +31,7 @@ function User() {
   const query = useQuery();
   const navigate = useNavigate();
   const currentPage = parseInt(query.get("page") || "1", 10);
+  const translations = useTranslation();
 
   const openEditModal = (id) => setEditUserId(id);
   const closeEditModal = () => setEditUserId(null);
@@ -66,17 +68,17 @@ function User() {
           padding: "5px 15px",
         }}
       >
-        <Heading>User List</Heading>
+        <Heading>{translations.userList}</Heading>
       </div>
       <Table size="sm">
         <Thead>
           <Tr>
             <Th>#</Th>
-            <Th>FirstName</Th>
-            <Th>LastName</Th>
-            <Th>PhoneNumber</Th>
+            <Th>{translations.firstName}</Th>
+            <Th>{translations.lastName}</Th>
+            <Th>{translations.phoneNumber}</Th>
             <Th>Email</Th>
-            <Th>Role</Th>
+            <Th>{translations.role}</Th>
             <Th display="flex" justifyContent="center">
               Action
             </Th>
@@ -90,7 +92,7 @@ function User() {
           ) : (
             users.map((user, index) => (
               <Tr key={user.id}>
-                <Td>{index+1}</Td>
+                <Td>{index + 1}</Td>
                 <Td>{user.firstName}</Td>
                 <Td>{user.lastName}</Td>
                 <Td>{user.phoneNumber}</Td>

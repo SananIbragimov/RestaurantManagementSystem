@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.BLL.DTOs.Category;
+using RestaurantManagement.BLL.Enums;
 using RestaurantManagement.BLL.Services.Abstract;
 
 namespace RestaurantManagement.WebAPI.Controllers
@@ -45,10 +47,21 @@ namespace RestaurantManagement.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryPostDto categoryPostDto)
         {
-            var category = await _categoryService.CreateCategoryAsync(categoryPostDto);
-
-            return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
+            try
+            {
+                var category = await _categoryService.CreateCategoryAsync(categoryPostDto);
+                return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "An error occurred while creating the category" });
+            }
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CategoryPutDto categoryPutDto)
@@ -72,7 +85,7 @@ namespace RestaurantManagement.WebAPI.Controllers
                 await _categoryService.DeleteCategoryAsync(id);
                 return Ok("Deleted successfully");
             }
-            catch(KeyNotFoundException ex)
+            catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }

@@ -5,7 +5,9 @@ export const postCategory = (data) => {
 };
 
 export const getAllCategories = (currentPage = 1, itemsPerPage = 10) => {
-  return httpClient.get(`/category?pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+  return httpClient.get(
+    `/category?pageNumber=${currentPage}&pageSize=${itemsPerPage}`
+  );
 };
 
 export const getCategory = (id) => {

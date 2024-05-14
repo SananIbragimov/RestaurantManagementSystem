@@ -16,9 +16,11 @@ import {
 import { useFormik } from "formik";
 import { postMenu } from "../../services/menuService";
 import { menuSchema } from "../../validations/menuSchema";
+import { useTranslation } from "../../features/LanguageContext";
 
 function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
   const toast = useToast();
+  const translations = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -29,12 +31,19 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
       validToTime: "",
     },
     onSubmit: (values) => {
-
-        const formData = {
-            name: values.name,
-            validFrom: values.validFrom ? new Date(values.validFrom + 'T' + (values.validFromTime || '00:00')).toISOString() : undefined,
-            validTo: values.validTo ? new Date(values.validTo + 'T' + (values.validToTime || '00:00')).toISOString() : undefined
-          };
+      const formData = {
+        name: values.name,
+        validFrom: values.validFrom
+          ? new Date(
+              values.validFrom + "T" + (values.validFromTime || "00:00")
+            ).toISOString()
+          : undefined,
+        validTo: values.validTo
+          ? new Date(
+              values.validTo + "T" + (values.validToTime || "00:00")
+            ).toISOString()
+          : undefined,
+      };
 
       postMenu(formData)
         .then(() => {
@@ -65,16 +74,16 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
   return (
     <>
       <Button colorScheme="blue" onClick={onOpen}>
-        Add
+        {translations.add}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create menu</ModalHeader>
+          <ModalHeader>{translations.menuCreate}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Menu name</FormLabel>
+              <FormLabel>{translations.menuName}</FormLabel>
               <Input
                 value={formik.values.name}
                 name="name"
@@ -87,7 +96,7 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Start date</FormLabel>
+              <FormLabel>{translations.startDate}</FormLabel>
               <Input
                 type="date"
                 name="validFrom"
@@ -100,7 +109,7 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Start time</FormLabel>
+              <FormLabel>{translations.startTime}</FormLabel>
               <Input
                 type="time"
                 name="validFromTime"
@@ -115,7 +124,7 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>End date</FormLabel>
+              <FormLabel>{translations.endDate}</FormLabel>
               <Input
                 type="date"
                 name="validTo"
@@ -128,7 +137,7 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>End time</FormLabel>
+              <FormLabel>{translations.endTime}</FormLabel>
               <Input
                 type="time"
                 name="validToTime"
@@ -145,9 +154,9 @@ function MenuAddModal({ isOpen, onClose, onOpen, getMenus }) {
 
           <ModalFooter>
             <Button onClick={formik.handleSubmit} colorScheme="blue" mr={3}>
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

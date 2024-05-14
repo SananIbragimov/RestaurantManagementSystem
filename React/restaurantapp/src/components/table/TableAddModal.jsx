@@ -17,35 +17,42 @@ import {
 import { useFormik } from "formik";
 import { tableSchema } from "../../validations/tableSchema";
 import { postTable } from "../../services/tableService";
+import { useTranslation } from "../../features/LanguageContext";
 
 function TableAddModal({ isOpen, onClose, onOpen, getTables }) {
   const toast = useToast();
+  const translations = useTranslation();
 
   const formik = useFormik({
     initialValues: {
       name: "",
-      isReserved: "",
-      reservationTime: "",
-      validFromTime: "",
-      tableStatus: "",
-      capacity: ""
+      isReserved: false,
+      reservationTime: null,
+      validFromTime: null,
+      tableStatus: 1,
+      capacity: "",
     },
+    validationSchema: tableSchema,
     onSubmit: (values) => {
-      let reservationDateTime = values.reservationTime && values.validFromTime 
-        ? new Date(values.reservationTime + 'T' + values.validFromTime)
-        : undefined;
+      let reservationDateTime =
+        values.reservationTime && values.validFromTime
+          ? new Date(values.reservationTime + "T" + values.validFromTime)
+          : undefined;
 
-    if (reservationDateTime) {
-        reservationDateTime = new Date(reservationDateTime.getTime() - reservationDateTime.getTimezoneOffset() * 60000).toISOString();
-    }
+      if (reservationDateTime) {
+        reservationDateTime = new Date(
+          reservationDateTime.getTime() -
+            reservationDateTime.getTimezoneOffset() * 60000
+        ).toISOString();
+      }
 
-        const formData = {
-            name: values.name,
-            isReserved: values.isReserved,
-            reservationTime: reservationDateTime,
-            tableStatus: values.tableStatus,
-            capacity: values.capacity
-          };
+      const formData = {
+        name: values.name,
+        isReserved: values.isReserved,
+        reservationTime: reservationDateTime,
+        tableStatus: values.tableStatus,
+        capacity: values.capacity,
+      };
 
       postTable(formData)
         .then(() => {
@@ -70,22 +77,21 @@ function TableAddModal({ isOpen, onClose, onOpen, getTables }) {
           formik.resetForm();
         });
     },
-    validationSchema: tableSchema,
   });
 
   return (
     <>
       <Button colorScheme="blue" onClick={onOpen}>
-        Add
+        {translations.add}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create table</ModalHeader>
+          <ModalHeader>{translations.tableCreate}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Table name</FormLabel>
+              <FormLabel>{translations.tableName}</FormLabel>
               <Input
                 value={formik.values.name}
                 name="name"
@@ -98,42 +104,46 @@ function TableAddModal({ isOpen, onClose, onOpen, getTables }) {
             </FormControl>
 
             <FormControl padding={1}>
-                <FormLabel>IsReserved</FormLabel>
-                <Select
-                  name="isReserved"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.isReserved}
-                >
-                  <option value="">Select a value</option>
-                  <option value="true">true</option>
-                  <option value="false">false</option>
-                </Select>
-                {formik.touched.isReserved && formik.errors.isReserved && (
-                  <p style={{ color: "red" }}>{formik.errors.isReserved}</p>
-                )}
-              </FormControl>
+              <FormLabel>IsReserved</FormLabel>
+              <Select
+                name="isReserved"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.isReserved}
+                isDisabled={true}
+              >
+                <option value="false">false</option>
+              </Select>
+              {formik.touched.isReserved && formik.errors.isReserved && (
+                <p style={{ color: "red" }}>{formik.errors.isReserved}</p>
+              )}
+            </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Reservation date</FormLabel>
+              <FormLabel>{translations.reserveTime}</FormLabel>
               <Input
                 type="date"
                 name="reservationTime"
                 value={formik.values.reservationTime}
                 onChange={formik.handleChange}
+                isDisabled={true}
               />
-              {formik.errors.reservationTime && formik.touched.reservationTime && (
-                <span style={{ color: "red" }}>{formik.errors.reservationTime}</span>
-              )}
+              {formik.errors.reservationTime &&
+                formik.touched.reservationTime && (
+                  <span style={{ color: "red" }}>
+                    {formik.errors.reservationTime}
+                  </span>
+                )}
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Reservation time</FormLabel>
+              <FormLabel>{translations.reserveTime}</FormLabel>
               <Input
                 type="time"
                 name="validFromTime"
                 value={formik.values.validFromTime}
                 onChange={formik.handleChange}
+                isDisabled={true}
               />
               {formik.errors.validFromTime && formik.touched.validFromTime && (
                 <span style={{ color: "red" }}>
@@ -143,25 +153,23 @@ function TableAddModal({ isOpen, onClose, onOpen, getTables }) {
             </FormControl>
 
             <FormControl padding={1}>
-                <FormLabel>Table Status</FormLabel>
-                <Select
-                  name="tableStatus"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.tableStatus}
-                >
-                  <option value="">Select a value</option>
-                  <option value="1">Available</option>
-                  <option value="2">Reserved</option>
-                  <option value="3">Occupied</option>
-                </Select>
-                {formik.touched.tableStatus && formik.errors.tableStatus && (
-                  <p style={{ color: "red" }}>{formik.errors.tableStatus}</p>
-                )}
-              </FormControl>
+              <FormLabel>Table Status</FormLabel>
+              <Select
+                name="tableStatus"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.tableStatus}
+                isDisabled={true}
+              >
+                <option value="1">Available</option>
+              </Select>
+              {formik.touched.tableStatus && formik.errors.tableStatus && (
+                <p style={{ color: "red" }}>{formik.errors.tableStatus}</p>
+              )}
+            </FormControl>
 
-              <FormControl>
-              <FormLabel>Table capacity</FormLabel>
+            <FormControl>
+              <FormLabel>{translations.tableCapacity}</FormLabel>
               <Input
                 value={formik.values.capacity}
                 name="capacity"
@@ -176,9 +184,9 @@ function TableAddModal({ isOpen, onClose, onOpen, getTables }) {
 
           <ModalFooter>
             <Button onClick={formik.handleSubmit} colorScheme="blue" mr={3}>
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

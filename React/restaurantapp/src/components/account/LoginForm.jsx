@@ -25,7 +25,7 @@ function LoginForm() {
               userName: res.data.userName,
               token: res.data.token,
               role: res.data.role,
-              imageUrl: res.data.imageUrl
+              imageUrl: res.data.imageUrl,
             })
           );
           toast({
@@ -40,7 +40,7 @@ function LoginForm() {
         .catch((e) => {
           toast({
             title: e.message,
-            status: "warning",
+            status: "Email or password is incorrect",
             duration: 3000,
             isClosable: true,
           });

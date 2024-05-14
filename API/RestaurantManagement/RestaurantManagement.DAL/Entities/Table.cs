@@ -17,7 +17,6 @@ namespace RestaurantManagement.DAL.Entities
         public int Capacity { get; set; }
         public ICollection<Order> Orders { get; set; }
 
-        public Reservation Reservation {  get; set; }
-        public ICollection<TableOpeningHistory> OpeningHistories { get; set; } = new List<TableOpeningHistory>();
+        public Reservation Reservation { get; set; }
     }
 }

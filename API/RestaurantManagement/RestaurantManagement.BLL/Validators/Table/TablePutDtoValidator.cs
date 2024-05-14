@@ -19,18 +19,6 @@ namespace RestaurantManagement.BLL.Validators.Table
             RuleFor(x => x.Capacity)
                 .GreaterThan(0).WithMessage("Capacity must be greater than 0.");
 
-            When(x => x.IsReserved, () =>
-            {
-                RuleFor(x => x.ReservationTime)
-                    .NotNull().WithMessage("Reservation time is required when the table is reserved.")
-                    .Must(date => date == null || date > DateTime.Now).WithMessage("Reservation time must be in the future.");
-            });
-
-            When(x => !x.IsReserved, () =>
-            {
-                RuleFor(x => x.ReservationTime)
-                    .Null().WithMessage("Reservation time must be null when the table is not reserved.");
-            });
 
             RuleFor(x => x.TableStatus)
                 .IsInEnum().WithMessage("Invalid table status.");

@@ -15,5 +15,7 @@ namespace RestaurantManagement.DAL.Entities
         public AppUser AppUser { get; set; }
         public Table Table { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
+
+        public decimal TotalPrice => OrderItems?.Sum(item => item.TotalPrice) ?? 0;
     }
 }

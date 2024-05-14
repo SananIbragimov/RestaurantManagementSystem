@@ -17,11 +17,13 @@ import { useFormik } from "formik";
 import { editMenu, getMenu } from "../../services/menuService";
 import { menuSchema } from "../../validations/menuSchema";
 import { format } from "date-fns";
+import { useTranslation } from "../../features/LanguageContext";
 
 function MenuEditModal({ id, isOpen, onClose, getMenus }) {
   const toast = useToast();
   const [utcSDate, setUtcSDate] = useState("");
   const [utcEDate, setUtcEDate] = useState("");
+  const translations = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -125,11 +127,11 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Edit menu</ModalHeader>
+        <ModalHeader>{translations.menuUpdate}</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
-            <FormLabel>Menu name</FormLabel>
+            <FormLabel>{translations.menuName}</FormLabel>
             <Input
               value={formik.values.name}
               name="name"
@@ -142,7 +144,7 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>Start date</FormLabel>
+            <FormLabel>{translations.startDate}</FormLabel>
             <Input
               type="date"
               name="validFrom"
@@ -155,7 +157,7 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>Start time</FormLabel>
+            <FormLabel>{translations.startTime}</FormLabel>
             <Input
               type="time"
               name="validFromTime"
@@ -170,7 +172,7 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>End date</FormLabel>
+            <FormLabel>{translations.endDate}</FormLabel>
             <Input
               type="date"
               name="validTo"
@@ -183,7 +185,7 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
           </FormControl>
 
           <FormControl mt={4}>
-            <FormLabel>End time</FormLabel>
+            <FormLabel>{translations.endTime}</FormLabel>
             <Input
               type="time"
               name="validToTime"
@@ -198,9 +200,9 @@ function MenuEditModal({ id, isOpen, onClose, getMenus }) {
 
         <ModalFooter>
           <Button onClick={formik.handleSubmit} colorScheme="blue" mr={3}>
-            Save
+            {translations.modalSave}
           </Button>
-          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={onClose}>{translations.modalCancel}</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

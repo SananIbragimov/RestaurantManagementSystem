@@ -341,6 +341,10 @@ namespace RestaurantManagement.DAL.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -447,31 +451,6 @@ namespace RestaurantManagement.DAL.Migrations
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.DAL.Entities.Setting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Settings");
-                });
-
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.Table", b =>
                 {
                     b.Property<int>("Id")
@@ -499,30 +478,6 @@ namespace RestaurantManagement.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tables");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.DAL.Entities.TableOpeningHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("ClosedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("OpenedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TableId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TableId");
-
-                    b.ToTable("TableOpeningHistories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -655,17 +610,6 @@ namespace RestaurantManagement.DAL.Migrations
                     b.Navigation("Table");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.DAL.Entities.TableOpeningHistory", b =>
-                {
-                    b.HasOne("RestaurantManagement.DAL.Entities.Table", "Table")
-                        .WithMany("OpeningHistories")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Table");
-                });
-
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.AppUser", b =>
                 {
                     b.Navigation("Orders");
@@ -688,8 +632,6 @@ namespace RestaurantManagement.DAL.Migrations
 
             modelBuilder.Entity("RestaurantManagement.DAL.Entities.Table", b =>
                 {
-                    b.Navigation("OpeningHistories");
-
                     b.Navigation("Orders");
 
                     b.Navigation("Reservation")

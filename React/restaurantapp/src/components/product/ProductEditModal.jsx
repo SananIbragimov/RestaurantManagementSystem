@@ -18,12 +18,13 @@ import { getAllCategories } from "../../services/categoryService";
 import { editProduct, getProduct } from "../../services/productService";
 import { useFormik } from "formik";
 import { productSchema } from "../../validations/productSchema";
+import { useTranslation } from "../../features/LanguageContext";
 
 export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
   const [categories, setCategories] = useState([]);
   const [imagePreview, setImagePreview] = useState("");
   const toast = useToast();
-  
+  const translations = useTranslation();
 
   useEffect(() => {
     let active = true;
@@ -37,13 +38,17 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
 
         if (id) {
           const productRes = await getProduct(id);
-          const formattedPrice = productRes.data.price.toString().replace('.', ',');
+          const formattedPrice = productRes.data.price
+            .toString()
+            .replace(".", ",");
           if (active) {
             const selectedCategory = categoriesRes.data.items.find(
               (category) => category.name === productRes.data.categoryName
             );
-            const imageUrl = `${process.env.REACT_APP_API_BASE_URL}${productRes.data.imageUrl}?${new Date().getTime()}`;
-                
+            const imageUrl = `${process.env.REACT_APP_API_BASE_URL}${
+              productRes.data.imageUrl
+            }?${new Date().getTime()}`;
+
             formik.setValues({
               name: productRes.data.name,
               price: formattedPrice,
@@ -117,11 +122,11 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Update product</ModalHeader>
+          <ModalHeader>{translations.productUpdate}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Product name</FormLabel>
+              <FormLabel>{translations.productName}</FormLabel>
               <Input
                 value={formik.values.name}
                 onChange={formik.handleChange}
@@ -135,15 +140,15 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>{translations.price}</FormLabel>
               <Input
                 value={formik.values.price}
                 onChange={(event) => {
-                    const value = event.target.value.replace('.', ',');
-                    if (/^[0-9]*\,?[0-9]*$/.test(value)) {
-                      formik.setFieldValue('price', value);
-                    }
-                  }}
+                  const value = event.target.value.replace(".", ",");
+                  if (/^[0-9]*\,?[0-9]*$/.test(value)) {
+                    formik.setFieldValue("price", value);
+                  }
+                }}
                 onBlur={formik.handleBlur}
                 name="price"
                 placeholder="Enter price"
@@ -155,7 +160,7 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Category</FormLabel>
+              <FormLabel>{translations.category}</FormLabel>
               <Select
                 placeholder="Select category"
                 onChange={formik.handleChange}
@@ -175,7 +180,7 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Photo</FormLabel>
+              <FormLabel>{translations.photo}</FormLabel>
               {imagePreview && (
                 <img
                   key={imagePreview}
@@ -188,21 +193,21 @@ export default function ProductEditModal({ id, isOpen, onClose, getProducts }) {
                 type="file"
                 name="image"
                 onChange={(event) => {
-                    const file = event.currentTarget.files[0];
-                    if (!file) return; // Handle empty file selection
-                  
-                    formik.setFieldValue("image", file);
-                    setImagePreview(URL.createObjectURL(file));
-                  }}
+                  const file = event.currentTarget.files[0];
+                  if (!file) return; // Handle empty file selection
+
+                  formik.setFieldValue("image", file);
+                  setImagePreview(URL.createObjectURL(file));
+                }}
               />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={formik.handleSubmit}>
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

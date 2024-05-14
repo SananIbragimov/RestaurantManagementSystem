@@ -132,12 +132,28 @@ namespace RestaurantManagement.BLL.Services.Concrete
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
-                throw new Exception("User not found");
+                throw new KeyNotFoundException($"User not found with Id {id}");
             }
-            else
+
+            if (!string.IsNullOrEmpty(user.ImageUrl))
             {
-                await _userManager.DeleteAsync(user);
+                var imagePath = Path.Combine("uploads", "users", Path.GetFileName(user.ImageUrl));
+                try
+                {
+                    _fileService.DeleteFile(Path.GetFileName(user.ImageUrl), Path.GetDirectoryName(imagePath));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred while deleting the file: " + ex.Message);
+                }
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new InvalidOperationException("Failed to delete user.");
             }
         }
+
     }
 }

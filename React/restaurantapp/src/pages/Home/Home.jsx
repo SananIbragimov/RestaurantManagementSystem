@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import {
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 import { getAllCategories } from "../../services/categoryService";
 import ProductCard from "../../components/product/ProductCard";
 
@@ -15,20 +22,42 @@ function Home() {
   }, []);
 
   return (
-    <section style= {{width:'88%'}}>
+    <section style={{ width: "88%" }}>
       <Tabs variant="soft-rounded" colorScheme="green">
         <TabList>
-          {categories.map((category) => (
-            <Tab key={category.id}>{category.name}</Tab>
-          ))}
+          {categories.length > 0 ? (
+            categories.map((category) => (
+              <Tab key={category.id}>{category.name}</Tab>
+            ))
+          ) : (
+            <Text color="red" fontSize="20px">
+              Categories and products not found.
+            </Text>
+          )}
         </TabList>
         <TabPanels>
           {categories.map((category) => (
-            <TabPanel key={category.id} display='flex' gap='10px' flexWrap='wrap'>
-              {category.products.length === 0 ? (<p style={{color:'red'}}>No products found.</p>) :
-              (category.products.sort((a, b) => b.id - a.id).slice(0, 10).map((product) => (
-                <ProductCard key={product.id} img={`${process.env.REACT_APP_API_BASE_URL}${product.imageUrl}`} title={product.name} price={product.price}/>
-              )))}
+            <TabPanel
+              key={category.id}
+              display="flex"
+              gap="10px"
+              flexWrap="wrap"
+            >
+              {category.products.length === 0 ? (
+                <p style={{ color: "red" }}>No products found.</p>
+              ) : (
+                category.products
+                  .sort((a, b) => b.id - a.id)
+                  .slice(0, 10)
+                  .map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      img={`${process.env.REACT_APP_API_BASE_URL}${product.imageUrl}`}
+                      title={product.name}
+                      price={product.price}
+                    />
+                  ))
+              )}
             </TabPanel>
           ))}
         </TabPanels>

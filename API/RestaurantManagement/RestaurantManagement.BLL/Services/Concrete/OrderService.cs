@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.BLL.DTOs.Menu;
 using RestaurantManagement.BLL.DTOs.Order;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
@@ -24,13 +25,23 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<List<OrderDto>> GetAllAsync()
+        public async Task<PageResultDto<OrderDto>> GetAllAsync(int pageNumber, int pageSize)
         {
-            var orders = await _dbContext.Orders.AsNoTracking().ToListAsync();
+            var totalCount = await _dbContext.Orders.CountAsync();
+            var orders = await _dbContext.Orders.
+                                    Include(o => o.OrderItems)
+                                    .ThenInclude(oi => oi.Product)
+                                    .Skip((pageNumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .ToListAsync();
 
             var orderDtos = _mapper.Map<List<OrderDto>>(orders);
 
-            return orderDtos;
+            return new PageResultDto<OrderDto>
+            {
+                Items = orderDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<OrderDto> GetByIdAsync(int id)

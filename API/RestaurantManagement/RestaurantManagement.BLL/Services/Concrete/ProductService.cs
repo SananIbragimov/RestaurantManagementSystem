@@ -8,6 +8,7 @@ using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,8 @@ namespace RestaurantManagement.BLL.Services.Concrete
         public async Task<PageResultDto<ProductDto>> GetAllAsync(int pageNumber, int pageSize)
         {
             var totalCount = await _dbContext.Products.CountAsync();
-            var products =await _dbContext.Products
-                                .Include(p=>p.Category)
+            var products = await _dbContext.Products
+                                .Include(p => p.Category)
                                 .Skip((pageNumber - 1) * pageSize)
                                 .Take(pageSize)
                                 .ToListAsync();
@@ -47,7 +48,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<ProductDto> GetByIdAsync(int id)
         {
-            var product =await _dbContext.Products.Include(p=>p.Category).FirstOrDefaultAsync(p=>p.Id == id);
+            var product = await _dbContext.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == id);
             var productDto = _mapper.Map<ProductDto>(product);
 
             return productDto;
@@ -55,7 +56,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<ProductDto> GetByNameAsync(string name)
         {
-            var product =await  _dbContext.Products.Include(p => p.Category).FirstOrDefaultAsync(p=>p.Name.ToLower() == name.ToLower());
+            var product = await _dbContext.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Name.ToLower() == name.ToLower());
             var productDto = _mapper.Map<ProductDto>(product);
 
             return productDto;
@@ -65,7 +66,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
         {
             var products = await _dbContext.Products
                                 .Include(p => p.Category)
-                                .Where(p=>p.Price>=min && p.Price<=max)
+                                .Where(p => p.Price >= min && p.Price <= max)
                                 .Skip((pageNumber - 1) * pageSize)
                                 .Take(pageSize)
                                 .ToListAsync();
@@ -87,10 +88,19 @@ namespace RestaurantManagement.BLL.Services.Concrete
                 try
                 {
                     var imageUrl = await _fileService.AddFileAsync(productPostDto.Image, "uploads/products");
+                    var productName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(productPostDto.Name.Trim());
+
+                    var existingProduct = await _dbContext.Products
+                                                            .FirstOrDefaultAsync(c => c.Name.ToUpper() == productName.ToUpper());
+
+                    if (existingProduct != null)
+                    {
+                        throw new InvalidOperationException("A product with the same name already exists.");
+                    }
 
                     var product = _mapper.Map<Product>(productPostDto);
-
                     product.ImageUrl = imageUrl;
+                    product.Name = productName;
 
                     await _dbContext.Products.AddAsync(product);
                     await _dbContext.SaveChangesAsync();
@@ -98,23 +108,22 @@ namespace RestaurantManagement.BLL.Services.Concrete
                     await transaction.CommitAsync();
 
                     var savedProduct = await _dbContext.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == product.Id);
-
                     var productDto = _mapper.Map<ProductDto>(savedProduct);
 
                     return productDto;
                 }
-                catch
+                catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    throw;
+                    throw new Exception("Failed to create product: " + ex.Message);
                 }
             }
-
         }
+
 
         public async Task<string> UpdateProductAsync(int id, ProductPutDto productPutDto)
         {
-            var product =await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
             if (product != null)
             {
                 if (productPutDto.Image != null)
@@ -136,15 +145,20 @@ namespace RestaurantManagement.BLL.Services.Concrete
         public async Task DeleteProductAsync(int id)
         {
             var product = await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
-            if (product != null)
-            {
-                 _dbContext.Remove(product);
-                await _dbContext.SaveChangesAsync();
-            }
-            else
+            if (product == null)
             {
                 throw new KeyNotFoundException($"Product not found with Id {id}");
             }
+
+            if (!string.IsNullOrEmpty(product.ImageUrl))
+            {
+                var imagePath = Path.Combine("uploads", "products", Path.GetFileName(product.ImageUrl));
+                _fileService.DeleteFile(Path.GetFileName(product.ImageUrl), Path.GetDirectoryName(imagePath));
+            }
+
+            _dbContext.Remove(product);
+            await _dbContext.SaveChangesAsync();
         }
+
     }
 }

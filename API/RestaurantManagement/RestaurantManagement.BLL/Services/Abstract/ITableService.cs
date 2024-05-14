@@ -15,6 +15,6 @@ namespace RestaurantManagement.BLL.Services.Abstract
         Task<TableDto> GetByIdAsync(int id);
         Task<TableDto> CreateTableAsync(TablePostDto tablePostDto);
         Task UpdateTableAsync(int id, TablePutDto tablePutDto);
-        Task DeleteTableAsync(int id);
+        Task<string> DeleteTableAsync(int id);
     }
 }

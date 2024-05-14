@@ -5,7 +5,9 @@ export const postProduct = (data) => {
 };
 
 export const getAllProducts = (currentPage, itemsPerPage) => {
-  return httpClient.get(`/product?pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+  return httpClient.get(
+    `/product?pageNumber=${currentPage}&pageSize=${itemsPerPage}`
+  );
 };
 
 export const getProduct = (id) => {
@@ -13,12 +15,14 @@ export const getProduct = (id) => {
 };
 
 export const getProductByName = (name) => {
-    return httpClient.get(`/product/name/${name}`);
-  };
+  return httpClient.get(`/product/name/${name}`);
+};
 
 export const getProductByPrice = (min, max, currentPage, itemsPerPage) => {
-    return httpClient.get(`/product/price?min=${min}&max=${max}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
-  };
+  return httpClient.get(
+    `/product/price?min=${min}&max=${max}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`
+  );
+};
 
 export const editProduct = (id, data) => {
   return httpClient.put(`/product/${id}`, data);

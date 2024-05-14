@@ -23,6 +23,7 @@ import { getAllMenuItemsByMenuId } from "../../../services/menuService";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import MenuItemDeleteModal from "./MenuItemDeleteModal";
 import MenuItemEditModal from "./MenuItemEditModal";
+import { useTranslation } from "../../../features/LanguageContext";
 
 const ViewItemsModal = ({ isOpen, onClose, menuId, getMenus }) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
@@ -31,6 +32,8 @@ const ViewItemsModal = ({ isOpen, onClose, menuId, getMenus }) => {
     (sum, item) => sum + item.displayPrice,
     0
   );
+  const translations = useTranslation();
+
   const {
     isOpen: isEditOpen,
     onOpen: onEditOpen,
@@ -94,15 +97,15 @@ const ViewItemsModal = ({ isOpen, onClose, menuId, getMenus }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Menu Items</ModalHeader>
+          <ModalHeader>{translations.menuItems}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <TableContainer>
               <Table variant="simple">
                 <Thead>
                   <Tr>
-                    <Th>Name</Th>
-                    <Th>Price</Th>
+                    <Th>{translations.productName}</Th>
+                    <Th>{translations.price}</Th>
                     <Th>Action</Th>
                   </Tr>
                 </Thead>
@@ -153,7 +156,7 @@ const ViewItemsModal = ({ isOpen, onClose, menuId, getMenus }) => {
                 />
                 <Tfoot>
                   <Tr>
-                    <Th>Total</Th>
+                    <Th>{translations.total}</Th>
                     <Th>{totalPrice}</Th>
                   </Tr>
                 </Tfoot>
@@ -161,7 +164,7 @@ const ViewItemsModal = ({ isOpen, onClose, menuId, getMenus }) => {
             </TableContainer>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onClose}>{translations.close}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

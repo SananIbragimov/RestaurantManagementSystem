@@ -1,19 +1,19 @@
 import React from "react";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalHeader,
-    ModalOverlay,
-    ModalFooter,
-    useToast,
-    Heading,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  ModalFooter,
+  useToast,
+  Heading,
+} from "@chakra-ui/react";
 import { deleteUser } from "../../services/userService";
 
-function UserDeleteModal({id, isOpen, onClose, getUsers}) {
+function UserDeleteModal({ id, isOpen, onClose, getUsers }) {
   const toast = useToast();
 
   const handleDeleteBtnClick = async () => {

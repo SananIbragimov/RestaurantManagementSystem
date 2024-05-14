@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.BLL.DTOs.Menu;
 using RestaurantManagement.BLL.DTOs.Pagination;
 using RestaurantManagement.BLL.DTOs.Table;
+using RestaurantManagement.BLL.Enums;
 using RestaurantManagement.BLL.Services.Abstract;
 using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
@@ -30,6 +31,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
             var totalCount = await _dbContext.Tables.CountAsync();
             var tables = await _dbContext.Tables.
                                     Include(o => o.Orders)
+                                    .ThenInclude(o => o.OrderItems)
                                     .Skip((pageNumber - 1) * pageSize)
                                     .Take(pageSize)
                                     .ToListAsync();
@@ -45,7 +47,10 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<TableDto> GetByIdAsync(int id)
         {
-            var table = await _dbContext.Tables.AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
+            var table = await _dbContext.Tables
+                            .Include(t => t.Orders)
+                            .ThenInclude(o => o.OrderItems)
+                            .FirstOrDefaultAsync(r => r.Id == id);
             var tableDto = _mapper.Map<TableDto>(table);
 
             return tableDto;
@@ -53,7 +58,14 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<TableDto> CreateTableAsync(TablePostDto tablePostDto)
         {
-            var table = _mapper.Map<Table>(tablePostDto);
+            var table = new Table
+            {
+                Name = tablePostDto.Name,
+                Capacity = tablePostDto.Capacity,
+                IsReserved = false,
+                ReservationTime = null,
+                TableStatus = TableStatusEnum.Available
+            };
 
             _dbContext.Tables.Add(table);
             await _dbContext.SaveChangesAsync();
@@ -77,18 +89,23 @@ namespace RestaurantManagement.BLL.Services.Concrete
             }
         }
 
-        public async Task DeleteTableAsync(int id)
+        public async Task<string> DeleteTableAsync(int id)
         {
-            var table = await _dbContext.Tables.FirstOrDefaultAsync(r => r.Id == id);
-            if (table != null)
+            var table = await _dbContext.Tables.Include(t => t.Orders).FirstOrDefaultAsync(r => r.Id == id);
+            if (table == null)
             {
-                _dbContext.Tables.Remove(table);
-                await _dbContext.SaveChangesAsync();
+                return $"Table with Id {id} not found.";
             }
-            else
+
+            if (table.Orders.Any())
             {
-                throw new KeyNotFoundException($"Table with Id {id} not found");
+                return "Table cannot be deleted because it has related orders. Please delete the orders first or reassign them.";
             }
+
+            _dbContext.Tables.Remove(table);
+            await _dbContext.SaveChangesAsync();
+            return "Deleted successfully.";
         }
+
     }
 }

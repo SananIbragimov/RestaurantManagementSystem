@@ -45,7 +45,7 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, [FromForm]UserPutDto userPutDto)
+        public async Task<IActionResult> Update(string id, [FromForm] UserPutDto userPutDto)
         {
             try
             {
@@ -67,10 +67,17 @@ namespace RestaurantManagement.WebAPI.Controllers
                 await _userService.DeleteUser(id);
                 return Ok("Successfully deleted");
             }
+            catch (KeyNotFoundException knfEx)
+            {
+
+                return NotFound(knfEx.Message);
+            }
             catch (Exception ex)
             {
+
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }

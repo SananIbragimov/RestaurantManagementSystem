@@ -14,7 +14,7 @@ namespace RestaurantManagement.WebAPI.Controllers
 
         public ProductController(IProductService productService)
         {
-            _productService = productService; 
+            _productService = productService;
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet("price")]
-        public async Task<IActionResult> GetByPriceRange([FromQuery] int min,[FromQuery] int max, int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetByPriceRange([FromQuery] int min, [FromQuery] int max, int pageNumber = 1, int pageSize = 10)
         {
             var products = await _productService.GetByPriceRangeAsync(min, max, pageNumber, pageSize);
 
@@ -54,13 +54,24 @@ namespace RestaurantManagement.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] ProductPostDto productPostDto)
         {
-            var product = await _productService.CreateProductAsync(productPostDto);
-
-            return CreatedAtAction(nameof(Create),product);
+            try
+            {
+                var product = await _productService.CreateProductAsync(productPostDto);
+                return CreatedAtAction(nameof(Create), new { id = product.Id }, product);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Server error: " + ex.Message });
+            }
         }
 
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id,[FromForm] ProductPutDto productPutDto)
+        public async Task<IActionResult> Update(int id, [FromForm] ProductPutDto productPutDto)
         {
             try
             {
@@ -68,7 +79,7 @@ namespace RestaurantManagement.WebAPI.Controllers
                 var response = new { Message = $"Product with Id {id} updated", updatedProduct };
                 return Ok(response);
             }
-            catch(KeyNotFoundException ex)
+            catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
@@ -82,7 +93,7 @@ namespace RestaurantManagement.WebAPI.Controllers
                 await _productService.DeleteProductAsync(id);
                 return Ok("Deleted successfully");
             }
-            catch(KeyNotFoundException ex)
+            catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }

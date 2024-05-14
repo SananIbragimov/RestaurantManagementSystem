@@ -22,7 +22,7 @@ namespace RestaurantManagement.BLL.Validators.Menu
 
             RuleFor(x => x.PromotionalPrice)
                 .GreaterThanOrEqualTo(0)
-                .When(x => x.PromotionalPrice.HasValue) 
+                .When(x => x.PromotionalPrice.HasValue)
                 .WithMessage("Promotional Price must be greater than or equal to 0.");
         }
     }

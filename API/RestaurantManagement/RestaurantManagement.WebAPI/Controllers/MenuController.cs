@@ -19,7 +19,7 @@ namespace RestaurantManagement.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var menus =await _menuService.GetAllAsync(pageNumber, pageSize);
+            var menus = await _menuService.GetAllAsync(pageNumber, pageSize);
             return Ok(menus);
         }
 
@@ -45,9 +45,10 @@ namespace RestaurantManagement.WebAPI.Controllers
         {
             try
             {
-               await _menuService.UpdateMenuAsync(id, menuPutDto);
-                return NoContent();
-            }catch(KeyNotFoundException ex)
+                await _menuService.UpdateMenuAsync(id, menuPutDto);
+                return Ok("Updated successfully");
+            }
+            catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }

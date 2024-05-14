@@ -13,7 +13,7 @@ namespace RestaurantManagement.BLL.AutoMapper
     {
         public CategoryProfile()
         {
-            CreateMap<Category,CategoryDto>();
+            CreateMap<Category, CategoryDto>();
             CreateMap<CategoryPostDto, Category>();
             CreateMap<CategoryPutDto, Category>();
         }

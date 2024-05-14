@@ -13,10 +13,13 @@ namespace RestaurantManagement.BLL.AutoMapper
     {
         public OrderProfile()
         {
-            CreateMap<Order, OrderDto>();
+            CreateMap<Order, OrderDto>()
+                .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems)); ;
             CreateMap<OrderPostDto, Order>();
             CreateMap<OrderPutDto, Order>();
-            CreateMap<OrderItem, OrderItemDto>();
+            CreateMap<OrderItem, OrderItemDto>()
+                .ForMember(dest => dest.Product, opt => opt.MapFrom(src => src.Product))
+                .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order)); ;
             CreateMap<OrderItemPostDto, OrderItem>();
             CreateMap<OrderItemPutDto, OrderItem>();
         }

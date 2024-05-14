@@ -17,13 +17,19 @@ import {
 import { useFormik } from "formik";
 import { getAllProducts } from "../../../services/productService";
 import { menuItemSchema } from "../../../validations/menuItemSchema";
-import { editMenuItem, getAllMenuItemsByMenuId, getMenuItem } from "../../../services/menuService";
+import {
+  editMenuItem,
+  getAllMenuItemsByMenuId,
+  getMenuItem,
+} from "../../../services/menuService";
+import { useTranslation } from "../../../features/LanguageContext";
 
 function MenuItemEditModal({ id, isOpen, onClose, getMenuItems }) {
   const [menuItems, setMenuItems] = useState([]);
   const [menuId, setMenuId] = useState(null);
   const [products, setProducts] = useState([]);
   const toast = useToast();
+  const translations = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -118,12 +124,12 @@ function MenuItemEditModal({ id, isOpen, onClose, getMenuItems }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create MenuItem</ModalHeader>
+        <ModalHeader>{translations.menuItemUpdate}</ModalHeader>
         <ModalCloseButton />
         <form onSubmit={formik.handleSubmit}>
           <ModalBody pb={6}>
             <FormControl mt={4}>
-              <FormLabel>Promotional Price</FormLabel>
+              <FormLabel>{translations.promotionalPrice}</FormLabel>
               <Input
                 value={formik.values.promotionalPrice}
                 onChange={(event) => {
@@ -146,7 +152,7 @@ function MenuItemEditModal({ id, isOpen, onClose, getMenuItems }) {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Product</FormLabel>
+              <FormLabel>{translations.product}</FormLabel>
               <Select
                 placeholder="Select product"
                 onChange={formik.handleChange}
@@ -168,9 +174,9 @@ function MenuItemEditModal({ id, isOpen, onClose, getMenuItems }) {
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} type="submit">
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </form>
       </ModalContent>

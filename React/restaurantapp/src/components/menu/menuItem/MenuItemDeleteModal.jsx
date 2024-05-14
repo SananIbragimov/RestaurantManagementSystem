@@ -1,20 +1,22 @@
 import React from "react";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalHeader,
-    ModalOverlay,
-    ModalFooter,
-    useToast,
-    Heading,
-  } from "@chakra-ui/react";
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  ModalFooter,
+  useToast,
+  Heading,
+} from "@chakra-ui/react";
 import { deleteMenuItem } from "../../../services/menuService";
+import { useTranslation } from "../../../features/LanguageContext";
 
-function MenuItemDeleteModal({id, isOpen, onClose, getMenuItems}) {
+function MenuItemDeleteModal({ id, isOpen, onClose, getMenuItems }) {
   const toast = useToast();
+  const translations = useTranslation();
 
   const handleDeleteBtnClick = async () => {
     let resp = await deleteMenuItem(id);
@@ -35,17 +37,17 @@ function MenuItemDeleteModal({id, isOpen, onClose, getMenuItems}) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Delete menuitem</ModalHeader>
+          <ModalHeader>{translations.menuItemDelete}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <Heading>Are you sure?</Heading>
+            <Heading>{translations.areYouSure}</Heading>
           </ModalBody>
 
           <ModalFooter>
             <Button onClick={handleDeleteBtnClick} colorScheme="red" mr={3}>
-              Yes
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

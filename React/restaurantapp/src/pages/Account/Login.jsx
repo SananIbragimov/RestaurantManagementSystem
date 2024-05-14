@@ -1,21 +1,22 @@
-import React from 'react'
+import React from "react";
 import {
-    Flex,
-    FormControl,
-    FormLabel,
-    Switch,
-    useColorMode,
-    useColorModeValue,
-  } from '@chakra-ui/react';
-import LoginForm from '../../components/account/LoginForm';
+  Flex,
+  FormControl,
+  FormLabel,
+  Switch,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import LoginForm from "../../components/account/LoginForm";
 
 function Login() {
-    const { toggleColorMode } = useColorMode();
-    const formBackground = useColorModeValue('gray.100', 'gray.700');
+  const { toggleColorMode } = useColorMode();
+  const formBackground = useColorModeValue("gray.100", "gray.700");
 
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
-      <Flex  width='30%'
+      <Flex
+        width="30%"
         flexDirection="column"
         bg={formBackground}
         p={12}
@@ -36,7 +37,7 @@ function Login() {
         </FormControl>
       </Flex>
     </Flex>
-  )
+  );
 }
 
-export default Login
+export default Login;

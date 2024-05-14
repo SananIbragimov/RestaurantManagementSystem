@@ -8,8 +8,9 @@ namespace RestaurantManagement.Common.Enums
 {
     public enum ReportTypeEnum
     {
-        Financial = 1,
-        Operational = 2,
-        Stock = 3
+        Sales = 1,
+        CustomerEngagement = 2,
+        Inventory = 3,
+        EmployeePerformance = 4
     }
 }

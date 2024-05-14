@@ -49,7 +49,7 @@ namespace RestaurantManagement.BLL.Services.Concrete
                                         .AsNoTracking()
                                         .FirstOrDefaultAsync(m => m.Id == id);
             var menuItemDto = _mapper.Map<MenuItemDto>(menuItem);
-                menuItemDto.DisplayPrice = menuItemDto.PromotionalPrice ?? menuItemDto.Product.Price;
+            menuItemDto.DisplayPrice = menuItemDto.PromotionalPrice ?? menuItemDto.Product.Price;
 
             return menuItemDto;
         }

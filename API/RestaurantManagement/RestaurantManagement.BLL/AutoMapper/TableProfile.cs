@@ -16,9 +16,6 @@ namespace RestaurantManagement.BLL.AutoMapper
             CreateMap<Table, TableDto>();
             CreateMap<TablePostDto, Table>();
             CreateMap<TablePutDto, Table>();
-            CreateMap<TableOpeningHistory, TableOpeningHistoryDto>();
-            CreateMap<TableOpeningHistoryPostDto, TableOpeningHistory>();
-            CreateMap<TableOpeningHistoryPutDto, TableOpeningHistory>();
         }
     }
 }

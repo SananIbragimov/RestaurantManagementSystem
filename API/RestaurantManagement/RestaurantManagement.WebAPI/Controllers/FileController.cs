@@ -52,6 +52,11 @@ namespace RestaurantManagement.WebAPI.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(folder) || string.IsNullOrEmpty(fileName) || fileName.Contains("..") || folder.Contains(".."))
+                {
+                    return BadRequest("Invalid folder or file name.");
+                }
+
                 var basePath = _configuration.GetValue<string>("FileUploadSettings:UploadPath");
                 var targetDirectory = Path.Combine(basePath, folder);
 
@@ -63,6 +68,7 @@ namespace RestaurantManagement.WebAPI.Controllers
                 return BadRequest($"An error occurred while deleting the file: {ex.Message}");
             }
         }
+
 
     }
 }

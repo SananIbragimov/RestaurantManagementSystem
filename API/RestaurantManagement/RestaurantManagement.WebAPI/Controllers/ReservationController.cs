@@ -17,9 +17,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var reservations = await _reservationService.GetAllAsync();
+            var reservations = await _reservationService.GetAllAsync(pageNumber, pageSize);
             return Ok(reservations);
         }
 
@@ -46,7 +46,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _reservationService.UpdateReservationAsync(id, reservationPutDto);
-                return NoContent();
+                return Ok("Updated successfully");
             }
             catch (KeyNotFoundException ex)
             {
@@ -60,7 +60,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _reservationService.DeleteReservationAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch (KeyNotFoundException ex)
             {

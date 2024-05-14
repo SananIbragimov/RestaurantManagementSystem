@@ -1,5 +1,6 @@
 ﻿using RestaurantManagement.BLL.DTOs.Menu;
 using RestaurantManagement.BLL.DTOs.Order;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
 {
     public interface IOrderService
     {
-        Task<List<OrderDto>> GetAllAsync();
+        Task<PageResultDto<OrderDto>> GetAllAsync(int pageNumber, int pageSize);
         Task<OrderDto> GetByIdAsync(int id);
         Task<OrderDto> CreateOrderAsync(OrderPostDto orderPostDto);
         Task UpdateOrderAsync(int id, OrderPutDto orderPutDto);

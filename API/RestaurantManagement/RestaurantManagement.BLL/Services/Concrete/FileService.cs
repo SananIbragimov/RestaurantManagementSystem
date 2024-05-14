@@ -42,16 +42,29 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public void DeleteFile(string fileName, string targetDirectory)
         {
-            if (string.IsNullOrEmpty(targetDirectory))
+            if (string.IsNullOrEmpty(fileName) || string.IsNullOrEmpty(targetDirectory))
             {
-                throw new ArgumentException("Target directory cannot be null or empty.", nameof(targetDirectory));
+                throw new ArgumentException("File name or target directory cannot be null or empty.");
             }
 
-            string fileToDeletePath = Path.Combine(_hostEnvironment.ContentRootPath, targetDirectory, fileName);
-            if (File.Exists(fileToDeletePath))
+            var filePath = Path.Combine(_hostEnvironment.WebRootPath, targetDirectory, fileName);
+            if (!File.Exists(filePath))
             {
-                File.Delete(fileToDeletePath);
+                Console.WriteLine($"No file found at {filePath}. Nothing to delete.");
+                return;
+            }
+
+            try
+            {
+                File.Delete(filePath);
+                Console.WriteLine($"File deleted successfully from {filePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting file at {filePath}: {ex.Message}");
+                throw;
             }
         }
+
     }
 }

@@ -1,23 +1,25 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { editCategory, getCategory } from "../../services/categoryService";
 import {
-    Button,
-    FormControl,
-    Input,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalHeader,
-    ModalOverlay,
-    FormLabel,
-    ModalFooter,
-    useToast,
-  } from "@chakra-ui/react";
+  Button,
+  FormControl,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  FormLabel,
+  ModalFooter,
+  useToast,
+} from "@chakra-ui/react";
+import { useTranslation } from "../../features/LanguageContext";
 
-function CategoryEditModal({id, isOpen, onClose, getCategories}) {
+function CategoryEditModal({ id, isOpen, onClose, getCategories }) {
   const [input, setInput] = useState("");
   const toast = useToast();
+  const translations = useTranslation();
 
   const handleSaveBtnClick = async () => {
     if (input.length < 2) return;
@@ -38,8 +40,8 @@ function CategoryEditModal({id, isOpen, onClose, getCategories}) {
       }
     } catch (error) {
       console.log(error);
-    }finally{
-        onClose();
+    } finally {
+      onClose();
     }
   };
 
@@ -50,10 +52,9 @@ function CategoryEditModal({id, isOpen, onClose, getCategories}) {
       setInput(response.data.name || "");
     } catch (error) {
       console.error(error);
-      setInput("")
+      setInput("");
     }
   }, [id]);
-  
 
   useEffect(() => {
     if (!isOpen) return;
@@ -65,11 +66,11 @@ function CategoryEditModal({id, isOpen, onClose, getCategories}) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Edit category</ModalHeader>
+          <ModalHeader>{translations.categoryUpdate}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Category name</FormLabel>
+              <FormLabel>{translations.categoryName}</FormLabel>
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value.trim())}
@@ -80,9 +81,9 @@ function CategoryEditModal({id, isOpen, onClose, getCategories}) {
 
           <ModalFooter>
             <Button onClick={handleSaveBtnClick} colorScheme="blue" mr={3}>
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

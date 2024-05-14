@@ -18,9 +18,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var orders = await _orderService.GetAllAsync();
+            var orders = await _orderService.GetAllAsync(pageNumber, pageSize);
             return Ok(orders);
         }
 
@@ -47,7 +47,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _orderService.UpdateOrderAsync(id, orderPutDto);
-                return NoContent();
+                return Ok("Updated successfully");
             }
             catch (KeyNotFoundException ex)
             {
@@ -61,7 +61,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _orderService.DeleteOrderAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch (KeyNotFoundException ex)
             {

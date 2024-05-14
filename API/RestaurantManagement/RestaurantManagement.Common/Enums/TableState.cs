@@ -11,6 +11,6 @@ namespace RestaurantManagement.BLL.Enums
         Available = 1,
         Reserved = 2,
         Occupied = 3,
-        
+
     }
 }

@@ -9,6 +9,7 @@ namespace RestaurantManagement.BLL.DTOs.Reservation
     public class ReservationPostDto
     {
         public int TableId { get; set; }
+        public DateTime ReservationTime { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPhone { get; set; }
     }

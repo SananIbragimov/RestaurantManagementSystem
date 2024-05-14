@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.BLL.DTOs.Menu;
 using RestaurantManagement.BLL.DTOs.Order;
 using RestaurantManagement.BLL.Services.Abstract;
+using RestaurantManagement.BLL.Services.Concrete;
 
 namespace RestaurantManagement.WebAPI.Controllers
 {
@@ -33,6 +34,18 @@ namespace RestaurantManagement.WebAPI.Controllers
             return Ok(orderItem);
         }
 
+        [HttpGet("orderId/{orderId}")]
+        public async Task<IActionResult> GetAllOrderItemsByOrderId(int orderId)
+        {
+            var orderItems = await _orderItemService.GetAllOrderItemsByOrderIdAsync(orderId);
+            if (!orderItems.Any())
+            {
+                return NotFound($"No OrderItems found for orderId: {orderId}");
+            }
+
+            return Ok(orderItems);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(OrderItemPostDto orderItemPostDto)
         {
@@ -47,7 +60,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _orderItemService.UpdateOrderItemAsync(id, orderItemPutDto);
-                return NoContent();
+                return Ok("Updated successfully");
             }
             catch (KeyNotFoundException ex)
             {
@@ -61,7 +74,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _orderItemService.DeleteOrderItemAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully");
             }
             catch (KeyNotFoundException ex)
             {

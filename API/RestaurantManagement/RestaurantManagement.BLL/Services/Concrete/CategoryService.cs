@@ -7,6 +7,7 @@ using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +60,18 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
         public async Task<CategoryDto> CreateCategoryAsync(CategoryPostDto categoryPostDto)
         {
+            var categoryName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(categoryPostDto.Name.Trim());
+
+
+            var existingCategory = await _dbContext.Categories
+                                                   .FirstOrDefaultAsync(c => c.Name.ToUpper() == categoryName.ToUpper());
+            if (existingCategory != null)
+            {
+                throw new InvalidOperationException("A category with the same name already exists.");
+            }
+
             var category = _mapper.Map<Category>(categoryPostDto);
+            category.Name = categoryName;
 
             await _dbContext.Categories.AddAsync(category);
             await _dbContext.SaveChangesAsync();
@@ -67,13 +79,12 @@ namespace RestaurantManagement.BLL.Services.Concrete
             var categoryDto = _mapper.Map<CategoryDto>(category);
 
             return categoryDto;
-
         }
 
         public async Task UpdateCategoryAsync(int id, CategoryPutDto categoryPutDto)
         {
             var category = _dbContext.Categories.FirstOrDefault(c => c.Id == id);
-            if(category != null)
+            if (category != null)
             {
                 category.Name = categoryPutDto.Name;
 

@@ -18,9 +18,9 @@ namespace RestaurantManagement.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
-            var reports = await _reportService.GetAllAsync();
+            var reports = await _reportService.GetAllAsync(pageNumber, pageSize);
             return Ok(reports);
         }
 
@@ -32,6 +32,14 @@ namespace RestaurantManagement.WebAPI.Controllers
 
             return Ok(report);
         }
+
+        [HttpGet("totalsales")]
+        public async Task<IActionResult> GetTotalSales([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        {
+            var totalSales = await _reportService.CalculateTotalSalesAsync(startDate, endDate);
+            return Ok(new { TotalSales = totalSales });
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(ReportPostDto reportPostDto)
@@ -47,7 +55,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _reportService.UpdateReportAsync(id, reportPutDto);
-                return NoContent();
+                return Ok("Updated successfully.");
             }
             catch (KeyNotFoundException ex)
             {
@@ -61,7 +69,7 @@ namespace RestaurantManagement.WebAPI.Controllers
             try
             {
                 await _reportService.DeleteReportAsync(id);
-                return NoContent();
+                return Ok("Deleted successfully.");
             }
             catch (KeyNotFoundException ex)
             {

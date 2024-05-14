@@ -1,7 +1,9 @@
 import { httpClient } from "../utils/httpClient";
 
 export const getAllUsers = (currentPage = 1, itemsPerPage = 10) => {
-  return httpClient.get(`/user?pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+  return httpClient.get(
+    `/user?pageNumber=${currentPage}&pageSize=${itemsPerPage}`
+  );
 };
 
 export const getUser = (id) => {

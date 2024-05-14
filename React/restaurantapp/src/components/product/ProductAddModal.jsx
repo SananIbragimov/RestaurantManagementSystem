@@ -18,17 +18,23 @@ import { getAllCategories } from "../../services/categoryService";
 import { postProduct } from "../../services/productService";
 import { useFormik } from "formik";
 import { productSchema } from "../../validations/productSchema";
+import { useTranslation } from "../../features/LanguageContext";
 
-export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }) {
+export default function ProductAddModal({
+  isOpen,
+  onOpen,
+  onClose,
+  getProducts,
+}) {
   const [categories, setCategories] = useState([]);
   const toast = useToast();
+  const translations = useTranslation();
 
   useEffect(() => {
-    getAllCategories(1,10)
+    getAllCategories(1, 10)
       .then((res) => {
-      setCategories(res.data.items)
-      }
-      )
+        setCategories(res.data.items);
+      })
       .catch((e) => console.error(e));
   }, []);
 
@@ -41,12 +47,12 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
     },
     validationSchema: productSchema,
     validate: (values) => {
-        const errors = {};
-        if (!values.image) {
-          errors.image = "Photo is required!";
-        }
-        return errors;
-      },
+      const errors = {};
+      if (!values.image) {
+        errors.image = "Photo is required!";
+      }
+      return errors;
+    },
     onSubmit: (values) => {
       const formData = new FormData();
       formData.append("name", values.name);
@@ -58,8 +64,9 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
 
       postProduct(formData, {
         headers: {
-            'Content-Type': 'multipart/form-data'
-        }})
+          "Content-Type": "multipart/form-data",
+        },
+      })
         .then((res) => {
           toast({
             title: "Product created.",
@@ -87,16 +94,16 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
   return (
     <>
       <Button colorScheme="blue" onClick={onOpen}>
-        Add
+        {translations.add}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create product</ModalHeader>
+          <ModalHeader>{translations.productCreate}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Product name</FormLabel>
+              <FormLabel>{translations.productName}</FormLabel>
               <Input
                 value={formik.values.name}
                 onChange={formik.handleChange}
@@ -110,13 +117,13 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>{translations.price}</FormLabel>
               <Input
                 value={formik.values.price}
                 onChange={(event) => {
-                  const value = event.target.value.replace('.', ',');
-                  if (/^[0-9]*\,?[0-9]*$/.test(value)) {
-                    formik.setFieldValue('price', value);
+                  const value = event.target.value.replace(".", ",");
+                  if (/^[0-9]*,?[0-9]*$/.test(value)) {
+                    formik.setFieldValue("price", value);
                   }
                 }}
                 onBlur={formik.handleBlur}
@@ -130,7 +137,7 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Category</FormLabel>
+              <FormLabel>{translations.category}</FormLabel>
               <Select
                 placeholder="Select category"
                 onChange={formik.handleChange}
@@ -150,7 +157,7 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Photo</FormLabel>
+              <FormLabel>{translations.photo}</FormLabel>
               <Input
                 type="file"
                 name="image"
@@ -163,9 +170,9 @@ export default function ProductAddModal({ isOpen, onOpen, onClose, getProducts }
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={formik.handleSubmit}>
-              Save
+              {translations.modalSave}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{translations.modalCancel}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

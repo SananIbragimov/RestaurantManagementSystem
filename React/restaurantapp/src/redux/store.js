@@ -1,13 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import { combineReducers } from "redux";
 import accountSlice from "./slices/accountSlice";
 import langSlice from "./slices/langSlice";
 
 const reducers = combineReducers({
   account: accountSlice,
-  lang: langSlice
+  lang: langSlice,
 });
 
 const persistConfig = {
@@ -17,7 +26,6 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
-
 
 export const store = configureStore({
   reducer: persistedReducer,

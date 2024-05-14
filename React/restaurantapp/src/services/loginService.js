@@ -6,4 +6,4 @@ export const postLogin = (data) => {
 
 export const logout = () => {
   return httpClient.post("/account/logout");
-}
+};

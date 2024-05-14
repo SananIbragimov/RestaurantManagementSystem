@@ -1,5 +1,4 @@
-﻿using RestaurantManagement.BLL.DTOs.Menu;
-using RestaurantManagement.BLL.DTOs.Order;
+﻿using RestaurantManagement.BLL.DTOs.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +11,7 @@ namespace RestaurantManagement.BLL.Services.Abstract
     {
         Task<List<OrderItemDto>> GetAllAsync();
         Task<OrderItemDto> GetByIdAsync(int id);
+        Task<List<OrderItemDto>> GetAllOrderItemsByOrderIdAsync(int orderId);
         Task<OrderItemDto> CreateOrderItemAsync(OrderItemPostDto orderItemPostDto);
         Task UpdateOrderItemAsync(int id, OrderItemPutDto orderItemPutDto);
         Task DeleteOrderItemAsync(int id);

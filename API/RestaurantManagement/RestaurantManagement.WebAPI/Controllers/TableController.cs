@@ -57,15 +57,13 @@ namespace RestaurantManagement.WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            try
+            var result = await _tableService.DeleteTableAsync(id);
+            if (result == "Deleted successfully.")
             {
-                await _tableService.DeleteTableAsync(id);
-                return Ok("Deleted successfully.");
+                return Ok(result);
             }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return BadRequest(result);
         }
+
     }
 }

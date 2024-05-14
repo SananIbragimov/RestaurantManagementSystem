@@ -43,26 +43,14 @@ namespace RestaurantManagement.WebAPI
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderItemService, OrderItemService>();
             builder.Services.AddScoped<IReportService, ReportService>();
+            builder.Services.AddHostedService<TableStatusUpdateService>();
             builder.Services.AddScoped<IReservationService, ReservationService>();
-            builder.Services.AddScoped<ISettingService, SettingService>();
             builder.Services.AddScoped<ITableService, TableService>();
-            builder.Services.AddScoped<ITableOpeningHistoryService, TableOpeningHistoryService>();
 
             builder.Services
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters()
                 .AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
-
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAll",
-            //        builder =>
-            //        {
-            //            builder.AllowAnyOrigin()
-            //                   .AllowAnyMethod()
-            //                   .AllowAnyHeader();
-            //        });
-            //});
 
 
             var app = builder.Build();
@@ -78,7 +66,7 @@ namespace RestaurantManagement.WebAPI
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .SetIsOriginAllowed(origin => true)
-                        .AllowCredentials()); 
+                        .AllowCredentials());
 
 
             app.UseHttpsRedirection();

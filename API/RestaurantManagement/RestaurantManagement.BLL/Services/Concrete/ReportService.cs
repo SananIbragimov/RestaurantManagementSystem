@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RestaurantManagement.BLL.DTOs.Order;
+using RestaurantManagement.BLL.DTOs.Pagination;
 using RestaurantManagement.BLL.DTOs.Report;
+using RestaurantManagement.BLL.DTOs.Table;
 using RestaurantManagement.BLL.Services.Abstract;
+using RestaurantManagement.Common.Enums;
 using RestaurantManagement.DAL.Data;
 using RestaurantManagement.DAL.Entities;
 using System;
@@ -24,13 +28,21 @@ namespace RestaurantManagement.BLL.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<List<ReportDto>> GetAllAsync()
+        public async Task<PageResultDto<ReportDto>> GetAllAsync(int pageNumber, int pageSize)
         {
-            var reports = await _dbContext.Reports.AsNoTracking().ToListAsync();
+            var totalCount = await _dbContext.Reports.CountAsync();
+            var reports = await _dbContext.Reports
+                                        .Skip((pageNumber - 1) * pageSize)
+                                        .Take(pageSize)
+                                        .ToListAsync();
 
             var reportDtos = _mapper.Map<List<ReportDto>>(reports);
 
-            return reportDtos;
+            return new PageResultDto<ReportDto>
+            {
+                Items = reportDtos,
+                TotalCount = totalCount
+            };
         }
 
         public async Task<ReportDto> GetByIdAsync(int id)
@@ -40,6 +52,23 @@ namespace RestaurantManagement.BLL.Services.Concrete
 
             return reportDto;
         }
+
+        public async Task<decimal> CalculateTotalSalesAsync(DateTime startDate, DateTime endDate)
+        {
+            var reports = await _dbContext.Reports
+                .Where(r => r.CreatedDate >= startDate && r.CreatedDate <= endDate && r.ReportType == ReportTypeEnum.Sales)
+                .ToListAsync();
+
+            decimal totalSales = 0;
+            foreach (var report in reports)
+            {
+                var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(report.Data);
+                totalSales += Convert.ToDecimal(data["total"]);
+            }
+
+            return totalSales;
+        }
+
 
         public async Task<ReportDto> CreateReportAsync(ReportPostDto reportPostDto)
         {
